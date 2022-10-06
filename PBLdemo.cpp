@@ -159,6 +159,7 @@ int main() {
     pt.nhapThongTin();
     pt.thongTinChuXe();
     pt.kiemTraKiemDinh();
+    return 0;
 }
 
 
