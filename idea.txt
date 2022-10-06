@@ -1,0 +1,21 @@
+Pbl2: Xây dựng quản lý các phương tiện giao thông
+
+Class: 
++ Hãng sản xuất
++ Biển số xe
++ Chủ xe
++ Ngày đăng ký xe
++ Nơi đăng ký xe(Phường, Quận)
+
+
+
+
+Kiểm tra:	
+_ Thông tin của xe và người sở hữu(kể cả trường hợp người sở hữu cũ) 
+_  Trong trường hợp người mua bán xe, thì sẽ đổi tên chủ sở hữu xe, đổi biển số xe mới
+_  Tình trạng xe 
+_  Kiểm tra xe đã từng vi phạm hay chưa?
+_  Xuất, nhập và kiểm tra các thuộc tính xe của các khu vực trong thành phố
+_  Kiểm tra đã quá hạn kiểm định hay chưa:
++Lấy giá trị ngày hiện tại trừ cho ngày đăng ký kiểm định gần đây nhất => kiểm tra được
+
