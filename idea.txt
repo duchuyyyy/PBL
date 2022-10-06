@@ -5,6 +5,8 @@ Class:
 + Biển số xe
 + Chủ xe
 + Ngày đăng ký xe
++ Tháng đăng ký xe
++ Năm đăng ký xe
 + Nơi đăng ký xe(Phường, Quận)
 
 
