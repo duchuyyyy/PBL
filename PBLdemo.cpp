@@ -152,12 +152,26 @@ void phuongTien::thongTinXe(){
         cout << "Nam dang ky xe: " << this->getNamDangKyXe() << endl;
         cout << "Noi dang ky xe: " << this->getNoiDangKyXe() << endl;
  }
-
+void phuongTien::thongTinPhuongTienKhuVuc(){
+   string khuVuc;
+    cout << "Nhap khu vuc can kiem tra: ";
+    cin.ignore();
+    getline(cin, khuVuc);
+    //cin >> khuVuc;
+    if(this->noiDangKyXe == khuVuc){
+        cout << "Chu xe: " << this->chuXe << endl;
+        cout << "Bien so xe: " << this->bienSoXe << endl;
+        cout << "Hang xe: " << this->hangSanXuat << endl;
+    } else{
+    	cout << "Nhap sai ten khu vuc" << endl;
+	}
+}
 int main() {
     phuongTien pt;
     pt.nhapThongTin();
-    pt.thongTinXe();
-    pt.kiemTraKiemDinh();
+    //pt.thongTinXe();
+    //pt.kiemTraKiemDinh();
+    pt.thongTinPhuongTienKhuVuc();
     return 0;
 }
 
