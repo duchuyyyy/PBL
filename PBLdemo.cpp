@@ -47,15 +47,7 @@ public:
     void kiemTraKiemDinh();
     void thongTinPhuongTienKhuVuc();
 };
-phuongTien::phuongTien(){
-	    this->hangSanXuat = "Honda";
-        this->bienSoXe = 43-999999;
-        this->chuXe = "Phan Hoang Duc Huy";
-        this->ngayDangKyXe = 23;
-        this->thangDangKyXe = 11;
-        this->namDangKyXe = 2020;
-        this->noiDangKyXe = "Thanh Khe";
-}
+phuongTien::phuongTien(){}
 void phuongTien::setData(string hangSanXuat, string bienSoXe, string chuXe, int ngayDangKyXe, int thangDangKyXe, int namDangKyXe, string noiDangKyXe){
 	    this->hangSanXuat = hangSanXuat;
         this->bienSoXe = bienSoXe;
@@ -126,7 +118,7 @@ int phuongTien::day(int d, int m, int y){
         return d;
 }
 void phuongTien::kiemTraKiemDinh(){
-    int d, m, y;
+        int d, m, y;
         cout << "Nhap ngay kiem dinh: " << endl;
         input(d, m, y);
         int kc1 = day(this->ngayDangKyXe, this->thangDangKyXe, this->namDangKyXe);
