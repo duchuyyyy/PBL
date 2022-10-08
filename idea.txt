@@ -21,3 +21,7 @@ _  Xuất, nhập và kiểm tra các thuộc tính xe của các khu vực tron
 _  Kiểm tra đã quá hạn kiểm định hay chưa:
 +Lấy giá trị ngày hiện tại trừ cho ngày đăng ký kiểm định gần đây nhất => kiểm tra được
 
+//!! Khi nhập một phương tiện, đưa thông tin phương tiện đó vào file khu vực tương ứng
+Khi kiểm tra thông tin khu vực, t nhập khu vực cần kiểm tra, sau đó chương trình in ra 
+thông tin có trong file khu vực quản lý.
+

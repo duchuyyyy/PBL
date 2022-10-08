@@ -1,5 +1,5 @@
 #include<iostream>
-#include<ctime>
+#include<fstream>
 #include<string>
 #include<math.h>
 using namespace std;
@@ -44,8 +44,10 @@ public:
     void input(int& d, int& m, int& y);
     int dmax(int m, int y);
     int day(int d, int m, int y);
-    void kiemTraKiemDinh();
+    void kiemTraKiemDinh(int d, int m, int y);
     void thongTinPhuongTienKhuVuc();
+    void docFile(ifstream &filein);
+    void nhapPhuongTienVaoFile();
 };
 phuongTien::phuongTien(){}
 void phuongTien::setData(string hangSanXuat, string bienSoXe, string chuXe, int ngayDangKyXe, int thangDangKyXe, int namDangKyXe, string noiDangKyXe){
@@ -117,10 +119,10 @@ int phuongTien::day(int d, int m, int y){
         }
         return d;
 }
-void phuongTien::kiemTraKiemDinh(){
-        int d, m, y;
-        cout << "Nhap ngay kiem dinh: " << endl;
-        input(d, m, y);
+void phuongTien::kiemTraKiemDinh(int d, int m, int y){
+        //int d, m, y;
+        //cout << "Nhap ngay kiem dinh: " << endl;
+        //input(d, m, y);
         int kc1 = day(this->ngayDangKyXe, this->thangDangKyXe, this->namDangKyXe);
         int kc2 = day(d, m, y);
         int kc = abs(kc2 - kc1);
@@ -144,13 +146,13 @@ void phuongTien::nhapThongTin(){
     this->input(this->ngayDangKyXe, this->thangDangKyXe, this->namDangKyXe);
 }
 void phuongTien::thongTinXe(){
- 	    cout << "Hang xe: " << this->getHangSanXuat() << endl;
-        cout << "Bien so xe: " << this->getBienSoXe() << endl;
-        cout << "Chu xe: " << this->getChuXe() << endl;
+ 	    cout << this->getHangSanXuat();
+        cout <<  this->getBienSoXe();
+        cout <<  this->getChuXe() << endl;
         cout << "Ngay dang ky xe: " << this->getNgayDangKyXe() << endl;
         cout << "Thang dang ky xe: " << this->getThangDangKyXe() << endl;
-        cout << "Nam dang ky xe: " << this->getNamDangKyXe() << endl;
-        cout << "Noi dang ky xe: " << this->getNoiDangKyXe() << endl;
+        cout << "Nam dang ky xe: " << this->getNamDangKyXe();
+        cout <<  this->getNoiDangKyXe() << endl;
  }
 void phuongTien::thongTinPhuongTienKhuVuc(){
    string khuVuc;
@@ -159,19 +161,62 @@ void phuongTien::thongTinPhuongTienKhuVuc(){
     getline(cin, khuVuc);
     //cin >> khuVuc;
     if(this->noiDangKyXe == khuVuc){
-        cout << "Chu xe: " << this->chuXe << endl;
-        cout << "Bien so xe: " << this->bienSoXe << endl;
-        cout << "Hang xe: " << this->hangSanXuat << endl;
+        this->thongTinXe();
     } else{
     	cout << "Nhap sai ten khu vuc" << endl;
 	}
 }
+void phuongTien::docFile(ifstream &filein){
+	getline(filein, this->hangSanXuat, ',');
+	getline(filein, this->bienSoXe, '.');
+	getline(filein, this->chuXe, '.');
+	filein >> this->ngayDangKyXe;
+	filein >> this->thangDangKyXe;
+	filein >> this->namDangKyXe;
+	getline(filein, this->noiDangKyXe, '.');
+}
+void phuongTien::nhapPhuongTienVaoFile(){
+	this->nhapThongTin();
+	ofstream fileout;
+	string filename;
+	cout << "Nhap ten file muon nhap thong xe vao: ";
+	cin >> filename;
+	fileout.open(filename.c_str(), ios_base::app);
+	fileout << "Hang xe: " << this->hangSanXuat << "," << endl;
+	fileout << "Bien so xe: " << this->bienSoXe << "." << endl;
+	fileout << "Chu xe: " << this->chuXe << "." << endl;
+	fileout << this->ngayDangKyXe << endl;
+	fileout << this->thangDangKyXe << endl;
+	fileout << this->namDangKyXe << endl;
+	fileout << "Noi dang ky: " << this->noiDangKyXe << "." << endl;
+	fileout.close();
+}
 int main() {
-    phuongTien pt;
-    pt.nhapThongTin();
-    //pt.thongTinXe();
-    //pt.kiemTraKiemDinh();
-    pt.thongTinPhuongTienKhuVuc();
+	ifstream filein;
+	string filename;
+	cout << "Nhap ten file can kiem tra: ";
+	cin >> filename;
+	filein.open(filename.c_str(), ios_base::out);
+	int soLuongPhuongTien;
+	filein >> soLuongPhuongTien;
+    phuongTien pt[10];
+    for(int i = 0; i < soLuongPhuongTien; ++i){
+    	pt[i].docFile(filein);
+	}
+    //pt.nhapThongTin();
+    int d, m, y;
+    cout << "Nhap ngay kiem dinh: " << endl;
+    pt[1].input(d, m, y);
+    for(int i = 0; i < soLuongPhuongTien; ++i){
+    	pt[i].thongTinXe();
+    	pt[i].kiemTraKiemDinh(d,m,y);
+    	cout << "\n";
+	}
+    //pt[].kiemTraKiemDinh();
+    //pt.thongTinPhuongTienKhuVuc();
+    filein.close();
+    //phuongTien pt;
+    //pt.nhapPhuongTienVaoFile();
     return 0;
 }
 
