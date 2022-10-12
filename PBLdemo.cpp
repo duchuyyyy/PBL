@@ -1,7 +1,4 @@
-#include<iostream>
-#include<fstream>
-#include<string>
-#include<math.h>
+#include<bits/stdc++.h>
 using namespace std;
 
 class phuongTien {
