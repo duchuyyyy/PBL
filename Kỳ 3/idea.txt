@@ -25,3 +25,20 @@ _  Kiểm tra đã quá hạn kiểm định hay chưa:
 Khi kiểm tra thông tin khu vực, t nhập khu vực cần kiểm tra, sau đó chương trình in ra 
 thông tin có trong file khu vực quản lý.
 
+
+Cccd chủ xe
+Phân khối
+Màu gì
+Loại gì
+Màu sắc
+Tên xe
+
+
+Sửa xoá, thay đổi thông tin xe
+Biển số xe làm mã số
+Thống kê theo từng khu vực: loại xe 
+Sắp xếp phương tiện theo khi vực theo chữ cái
+Quy định mã số xe(ngẫu nhiên biển số xe)
+Thống kê xe cũ theo năm 
+Kiểm tra nhập hãng xe, tên xe có đúng hay không
+Thống ke theo từng hãng, từng quận
