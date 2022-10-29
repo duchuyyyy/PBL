@@ -3,8 +3,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
-
 class phuongTien {
     string tenChuXe;
     string canCuocCongDan;

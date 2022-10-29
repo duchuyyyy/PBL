@@ -129,6 +129,7 @@ void phuongTien::kiemTraKiemDinh(int d, int m, int y){
         }
 }
 void phuongTien::nhapThongTin(){
+    cin.ignore();
     cout << "Nhap ho ten chu xe: " << endl;
     getline(cin,this->tenChuXe);
     cout << "Nhap can cuoc cong dan: " << endl;
@@ -149,17 +150,15 @@ void phuongTien::nhapThongTin(){
     this->input(this->ngayDangKyXe, this->thangDangKyXe, this->namDangKyXe);
 }
 void phuongTien::thongTinXe(){
-        cout << "Ten chu xe: " << this->getTenChuXe() << endl;
-        cout << "So can cuoc cong dan: " << this->getCanCuocCongDan() << endl;
- 	    cout << "Hang xe: " << this->getHangSanXuat() << endl;
-        cout << "Loai xe: " << this->getLoaiXe() << endl;
-        cout << "Mau xe: " << this->getMauXe() << endl;
-        cout << "Ten xe: " << this->getTenXe() << endl;
-        cout << "Bien so xe: " << this->getBienSoXe() << endl;
-        cout << "Ngay dang ky xe: " << this->getNgayDangKyXe() << endl;
-        cout << "Thang dang ky xe: " << this->getThangDangKyXe() << endl;
-        cout << "Nam dang ky xe: " << this->getNamDangKyXe() << endl;
-        cout <<  "Noi dang ky xe: " << this->getNoiDangKyXe() << endl;
+        cout << this->tenChuXe;
+        cout << this->canCuocCongDan;
+ 	    cout << this->hangSanXuat;
+        cout << this->loaiXe;
+        cout << this->mauXe;
+        cout << this->tenXe;
+        cout << this->bienSoXe << endl;
+        cout << "Ngay/thang/nam dang ky xe: " << this->ngayDangKyXe <<"/" << this->thangDangKyXe << "/" << this->namDangKyXe;
+        cout << this->noiDangKyXe;
 }
 void phuongTien::thongTinPhuongTienKhuVuc(){
     string khuVuc;
@@ -180,7 +179,7 @@ void phuongTien::docFile(ifstream &filein){
     getline(filein, this->loaiXe, ',');
     getline(filein, this->mauXe, ',');
     getline(filein, this->tenXe, ',');
-	getline(filein, this->bienSoXe, '.');
+	getline(filein, this->bienSoXe, ',');
 	filein >> this->ngayDangKyXe;
 	filein >> this->thangDangKyXe;
 	filein >> this->namDangKyXe;
@@ -194,17 +193,17 @@ void phuongTien::nhapPhuongTienVaoFile(){
 	cin >> filename;
     strcat(filename,".txt");
 	fileout.open(filename, ios_base::app);
-    fileout << this->tenChuXe << "," << endl;
-    fileout << this->canCuocCongDan << "." << endl;
-	fileout << this->hangSanXuat << "," << endl;
-    fileout << this->loaiXe << "," << endl;
-    fileout << this->mauXe << "," << endl;
-    fileout << this->tenXe << "," << endl;
-	fileout << this->bienSoXe << "," << endl;
+    fileout << "Ten chu xe: " << this->tenChuXe << "," << endl;
+    fileout << "So can cuoc cong dan: " << this->canCuocCongDan << "." << endl;
+	fileout << "Hang xe: " << this->hangSanXuat << "," << endl;
+    fileout << "Loai xe: " <<this->loaiXe << "," << endl;
+    fileout << "Mau xe: " << this->mauXe << "," << endl;
+    fileout << "Ten xe: " << this->tenXe << "," << endl;
+	fileout << "Bien so xe: " << this->bienSoXe << "," << endl;
 	fileout << this->ngayDangKyXe << endl;
 	fileout << this->thangDangKyXe << endl;
 	fileout << this->namDangKyXe << endl;
-	fileout << this->noiDangKyXe << "." << endl;
+	fileout << "Noi dang ky xe: " << this->noiDangKyXe << "." << endl;
 	fileout.close();
 }
 
