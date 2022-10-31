@@ -40,5 +40,7 @@ public:
     void thongTinPhuongTienKhuVuc();
     void docFile(ifstream &filein);
     void nhapPhuongTienVaoFile();
+    void inTatCaPhuongTien();
+    void capNhatSoLuongPhuongTien();
 };
 #endif

@@ -121,6 +121,7 @@ void phuongTien::kiemTraKiemDinh(int d, int m, int y){
         int kc1 = day(this->ngayDangKyXe, this->thangDangKyXe, this->namDangKyXe);
         int kc2 = day(d, m, y);
         int kc = abs(kc2 - kc1);
+        cout << "\n";
         if (kc > 365) {
             cout << "Xe da qua han kiem dinh!" << endl;
         }
@@ -187,12 +188,18 @@ void phuongTien::docFile(ifstream &filein){
 }
 void phuongTien::nhapPhuongTienVaoFile(){
 	this->nhapThongTin();
+    //! Tao file dem so luong rieng
+    /*fstream fileCount;
+    fileCount.open("soluongphuongtien.txt", ios_base::trunc);
+    int count;
+    fileCount >> count;
+    count++;
+    fileCount << count;
+    fileCount.close();*/
+    //! Cap nhat so luong phuong tien
+    this->capNhatSoLuongPhuongTien();
 	ofstream fileout;
-	char filename[20];
-	cout << "Nhap ten file muon nhap thong tin xe vao: ";
-	cin >> filename;
-    strcat(filename,".txt");
-	fileout.open(filename, ios_base::app);
+	fileout.open("thongtinxe.txt", ios_base::app);
     fileout << "Ten chu xe: " << this->tenChuXe << "," << endl;
     fileout << "So can cuoc cong dan: " << this->canCuocCongDan << "." << endl;
 	fileout << "Hang xe: " << this->hangSanXuat << "," << endl;
@@ -203,9 +210,34 @@ void phuongTien::nhapPhuongTienVaoFile(){
 	fileout << this->ngayDangKyXe << endl;
 	fileout << this->thangDangKyXe << endl;
 	fileout << this->namDangKyXe << endl;
-	fileout << "Noi dang ky xe: " << this->noiDangKyXe << "." << endl;
+	fileout << "Noi dang ky xe: " << this->noiDangKyXe << "." <<  endl;
 	fileout.close();
 }
 
+void phuongTien::inTatCaPhuongTien(){
+  string line;
+  ifstream myfile ("thongtinxe.txt");
+  if (myfile.is_open())
+  {
+    while ( getline (myfile,line) )
+    {
+      cout << line << '\n';
+    }
+    myfile.close();
+  }
 
+  else cout << "Unable to open file"; 
+}
+void phuongTien::capNhatSoLuongPhuongTien(){
+    ifstream filein;
+	filein.open("soluongphuongtien.txt", ios_base::in);
+	int count;
+	filein >> count;
+	count++;
+	filein.close();
+	ofstream fileout;
+	fileout.open("soluongphuongtien.txt", ios_base::out);
+	fileout << count;
+	fileout.close();
+}
 
