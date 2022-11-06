@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include<windows.h>
 #include"PBL.h"
 using namespace std;
 
@@ -123,10 +124,14 @@ void phuongTien::kiemTraKiemDinh(int d, int m, int y){
         int kc = abs(kc2 - kc1);
         cout << "\n";
         if (kc > 365) {
+            setColor(4);
             cout << "Xe da qua han kiem dinh!" << endl;
+            setColor(7);
         }
         else {
+            setColor(2);
             cout << "Xe chua qua han kiem dinh!" << endl;
+            setColor(7);
         }
 }
 void phuongTien::nhapThongTin(){
@@ -161,7 +166,7 @@ void phuongTien::thongTinXe(){
         cout << "Ngay/thang/nam dang ky xe: " << this->ngayDangKyXe <<"/" << this->thangDangKyXe << "/" << this->namDangKyXe;
         cout << this->noiDangKyXe;
 }
-void phuongTien::thongTinPhuongTienKhuVuc(){
+/*void phuongTien::thongTinPhuongTienKhuVuc(){
     string khuVuc;
     cout << "Nhap khu vuc can kiem tra: ";
     cin.ignore();
@@ -172,7 +177,7 @@ void phuongTien::thongTinPhuongTienKhuVuc(){
     } else{
     	cout << "Nhap sai ten khu vuc" << endl;
 	}
-}
+}*/
 void phuongTien::docFile(ifstream &filein){
     getline(filein, this->tenChuXe, ',');
     getline(filein, this->canCuocCongDan, '.');
@@ -186,49 +191,52 @@ void phuongTien::docFile(ifstream &filein){
 	filein >> this->namDangKyXe;
 	getline(filein, this->noiDangKyXe, '.');
 }
+void upperCase(string &s1){
+	for(int i = 0; i < s1.size(); ++i){
+		s1[i] = toupper(s1[i]);
+	}
+}
 void phuongTien::nhapPhuongTienVaoFile(){
 	this->nhapThongTin();
-    //! Tao file dem so luong rieng
-    /*fstream fileCount;
-    fileCount.open("soluongphuongtien.txt", ios_base::trunc);
-    int count;
-    fileCount >> count;
-    count++;
-    fileCount << count;
-    fileCount.close();*/
     //! Cap nhat so luong phuong tien
-    this->capNhatSoLuongPhuongTien();
-	ofstream fileout;
-	fileout.open("thongtinxe.txt", ios_base::app);
-    fileout << "Ten chu xe: " << this->tenChuXe << "," << endl;
-    fileout << "So can cuoc cong dan: " << this->canCuocCongDan << "." << endl;
-	fileout << "Hang xe: " << this->hangSanXuat << "," << endl;
-    fileout << "Loai xe: " <<this->loaiXe << "," << endl;
-    fileout << "Mau xe: " << this->mauXe << "," << endl;
-    fileout << "Ten xe: " << this->tenXe << "," << endl;
-	fileout << "Bien so xe: " << this->bienSoXe << "," << endl;
-	fileout << this->ngayDangKyXe << endl;
-	fileout << this->thangDangKyXe << endl;
-	fileout << this->namDangKyXe << endl;
-	fileout << "Noi dang ky xe: " << this->noiDangKyXe << "." <<  endl;
-	fileout.close();
+    this->capNhatSoLuongPhuongTienToanKhuVuc();
+    string filename, khuvuc;
+    khuvuc = this->noiDangKyXe;
+    upperCase(khuvuc);
+    this->capNhatSoLuongPhuongTienKhuVuc(khuvuc);
+    string temp = ".txt";
+    filename = khuvuc.append(temp);
+    //* Chia ra tung case voi moi khu vuc 
+    ofstream fileout1;
+    fileout1.open(filename.c_str(), ios_base::app);
+    fileout1 << "Ten chu xe: " << this->tenChuXe << "," << endl;
+    fileout1 << "So can cuoc cong dan: " << this->canCuocCongDan << "." << endl;
+	fileout1 << "Hang xe: " << this->hangSanXuat << "," << endl;
+    fileout1 << "Loai xe: " <<this->loaiXe << "," << endl;
+    fileout1 << "Mau xe: " << this->mauXe << "," << endl;
+    fileout1 << "Ten xe: " << this->tenXe << "," << endl;
+	fileout1 << "Bien so xe: " << this->bienSoXe << "," << endl;
+	fileout1 << this->ngayDangKyXe << endl;
+	fileout1 << this->thangDangKyXe << endl;
+	fileout1 << this->namDangKyXe << endl;
+	fileout1 << "Noi dang ky xe: " << this->noiDangKyXe << "." <<  endl;
+    fileout1.close();
+	ofstream fileout2;
+	fileout2.open("thongtinxe.txt", ios_base::app);
+    fileout2 << "Ten chu xe: " << this->tenChuXe << "," << endl;
+    fileout2 << "So can cuoc cong dan: " << this->canCuocCongDan << "." << endl;
+	fileout2 << "Hang xe: " << this->hangSanXuat << "," << endl;
+    fileout2 << "Loai xe: " <<this->loaiXe << "," << endl;
+    fileout2 << "Mau xe: " << this->mauXe << "," << endl;
+    fileout2 << "Ten xe: " << this->tenXe << "," << endl;
+	fileout2 << "Bien so xe: " << this->bienSoXe << "," << endl;
+	fileout2 << this->ngayDangKyXe << endl;
+	fileout2 << this->thangDangKyXe << endl;
+	fileout2 << this->namDangKyXe << endl;
+	fileout2 << "Noi dang ky xe: " << this->noiDangKyXe << "." <<  endl;
+	fileout2.close();
 }
-
-void phuongTien::inTatCaPhuongTien(){
-  string line;
-  ifstream myfile ("thongtinxe.txt");
-  if (myfile.is_open())
-  {
-    while ( getline (myfile,line) )
-    {
-      cout << line << '\n';
-    }
-    myfile.close();
-  }
-
-  else cout << "Unable to open file"; 
-}
-void phuongTien::capNhatSoLuongPhuongTien(){
+void phuongTien::capNhatSoLuongPhuongTienToanKhuVuc(){
     ifstream filein;
 	filein.open("soluongphuongtien.txt", ios_base::in);
 	int count;
@@ -239,5 +247,153 @@ void phuongTien::capNhatSoLuongPhuongTien(){
 	fileout.open("soluongphuongtien.txt", ios_base::out);
 	fileout << count;
 	fileout.close();
+}
+void phuongTien::setColor(int color){
+    WORD wColor;
+     
+
+     HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+     CONSOLE_SCREEN_BUFFER_INFO csbi;
+     if(GetConsoleScreenBufferInfo(hStdOut, &csbi))
+     {
+          wColor = (csbi.wAttributes & 0xF0) + (color & 0x0F);
+          SetConsoleTextAttribute(hStdOut, wColor);
+     }
+}
+void phuongTien::capNhatSoLuongPhuongTienKhuVuc(string khuvuc){
+    if(khuvuc == "HAI CHAU"){
+        ifstream filein;
+	    filein.open("soluongphuongtienHaiChau.txt", ios_base::in);
+	    int count;
+	    filein >> count;
+	    count++;
+	    filein.close();
+	    ofstream fileout;
+	    fileout.open("soluongphuongtienHaiChau.txt", ios_base::out);
+	    fileout << count;
+	    fileout.close();
+    }
+    else if(khuvuc == "THANH KHE"){
+        ifstream filein;
+	    filein.open("soluongphuongtienThanhKhe.txt", ios_base::in);
+	    int count;
+	    filein >> count;
+	    count++;
+	    filein.close();
+	    ofstream fileout;
+	    fileout.open("soluongphuongtienThanhKhe.txt", ios_base::out);
+	    fileout << count;
+	    fileout.close();
+    }
+    else if(khuvuc == "HOA VANG"){
+        ifstream filein;
+	    filein.open("soluongphuongtienHoaVang.txt", ios_base::in);
+	    int count;
+	    filein >> count;
+	    count++;
+	    filein.close();
+	    ofstream fileout;
+	    fileout.open("soluongphuongtienHoaVang.txt", ios_base::out);
+	    fileout << count;
+	    fileout.close();
+    }
+    else if(khuvuc == "HOANG SA"){
+        ifstream filein;
+	    filein.open("soluongphuongtienHoangSa.txt", ios_base::in);
+	    int count;
+	    filein >> count;
+	    count++;
+	    filein.close();
+	    ofstream fileout;
+	    fileout.open("soluongphuongtienHoangSa.txt", ios_base::out);
+	    fileout << count;
+	    fileout.close();
+    }
+    else if(khuvuc == "CAM LE"){
+        ifstream filein;
+	    filein.open("soluongphuongtienCamLe.txt", ios_base::in);
+	    int count;
+	    filein >> count;
+	    count++;
+	    filein.close();
+	    ofstream fileout;
+	    fileout.open("soluongphuongtienCamLe.txt", ios_base::out);
+	    fileout << count;
+	    fileout.close();
+    }
+    else if(khuvuc == "NGU HANH SON"){
+        ifstream filein;
+	    filein.open("soluongphuongtienNguHanhSon.txt", ios_base::in);
+	    int count;
+	    filein >> count;
+	    count++;
+	    filein.close();
+	    ofstream fileout;
+	    fileout.open("soluongphuongtienNguHanhSon.txt", ios_base::out);
+	    fileout << count;
+	    fileout.close();
+    }
+    else if(khuvuc == "LIEN CHIEU"){
+        ifstream filein;
+	    filein.open("soluongphuongtienLienChieu.txt", ios_base::in);
+	    int count;
+	    filein >> count;
+	    count++;
+	    filein.close();
+	    ofstream fileout;
+	    fileout.open("soluongphuongtienLienChieu.txt", ios_base::out);
+	    fileout << count;
+	    fileout.close();
+    }
+    else if(khuvuc == "SON TRA"){
+        ifstream filein;
+	    filein.open("soluongphuongtienSonTra.txt", ios_base::in);
+	    int count;
+	    filein >> count;
+	    count++;
+	    filein.close();
+	    ofstream fileout;
+	    fileout.open("soluongphuongtienSonTra.txt", ios_base::out);
+	    fileout << count;
+	    fileout.close();
+    }
+}
+void luaChonTimKiem(){
+    printf("\n");
+    printf("\t\t----------------------------------------------------------------\n");
+    printf("\t\t|                   TIM KIEM PHUONG TIEN                        |\n");
+    printf("\t\t|                                                               |\n");
+    printf("\t\t|            1. Tim theo can cuoc cong dan                      |\n");
+    printf("\t\t|            2. Tim theo ten chu phuong tien                    |\n");
+    printf("\t\t|            3. Tim theo bien so xe                             |\n");
+    printf("\t\t|            4. Tim theo khu                                    |\n");
+    printf("\t\t|            0. Thoat                                           |\n");
+    printf("\t\t----------------------------------------------------------------\n");
+}
+void timKiemTheoCanCuocCongDan(){
+    ifstream filecount;
+    filecount.open("soluongphuongtien.txt", ios_base::in);
+    int soLuongPhuongTien;
+    filecount >> soLuongPhuongTien;
+    filecount.close();
+    
+}
+void phuongTien::timKiemPhuongTien(){
+    int sel;
+    do {
+        luaChonTimKiem();
+        cout << "Nhap lua chon: ";
+        cin >> sel;
+        switch (sel)
+        {
+        case 1:
+        {
+
+        }
+        
+        default:
+            break;
+        }
+    }while(sel != 0);
 }
 

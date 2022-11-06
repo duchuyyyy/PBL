@@ -1,6 +1,7 @@
 #ifndef PBL_h
 #define PBL_h
 #include<bits/stdc++.h>
+#include<windows.h>
 using namespace std;
 
 class phuongTien {
@@ -40,7 +41,9 @@ public:
     void thongTinPhuongTienKhuVuc();
     void docFile(ifstream &filein);
     void nhapPhuongTienVaoFile();
-    void inTatCaPhuongTien();
-    void capNhatSoLuongPhuongTien();
+    void capNhatSoLuongPhuongTienToanKhuVuc();
+    void capNhatSoLuongPhuongTienKhuVuc(string khuvuc);
+    void setColor(int color);
+    void timKiemPhuongTien();
 };
 #endif
