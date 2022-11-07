@@ -1,6 +1,9 @@
 #include<bits/stdc++.h>
 #include<windows.h>
 #include"PBL.cpp"
+#include"Node.cpp"
+#include "Linkedlist.cpp"
+//#include "LinkedList.cpp"
 using namespace std;
 void title()//Tieu de
 {
@@ -23,13 +26,13 @@ void menu(){
     printf("\n");
     printf("\t\t-------------------------------------------------------------------------------------\n");
     printf("\t\t|                    CHUONG TRINH QUAN LY CAC PHUONG TIEN GIAO THONG                |\n");
-    printf("\t\t|   //! Doi lai DSLK                                                                |\n");
+    printf("\t\t|                                                                                   |\n");
     printf("\t\t|   1. Nhap thong tin cua phuong tien                                               |\n");
     printf("\t\t|   2. Kiem tra kiem dinh tat ca cac phuong tien                                    |\n");
     printf("\t\t|   3. In ra tat ca cac phuong tien trong thanh pho                                 |\n");
     printf("\t\t|   4. In ra phuong tien theo khu vuc                                               |\n");
     printf("\t\t|   5. Thong ke so luong phuong tien theo khu vuc                                   |\n");
-    printf("\t\t|   //!Chua lam 6. Tim kiem phuong tien trong thanh pho                             |\n");
+    printf("\t\t|   //*Dang lam 6. Tim kiem phuong tien trong thanh pho                             |\n");
     printf("\t\t|   //!Chua lam 7. Sap xep cac phuong tien theo hang                                |\n");
     printf("\t\t|   //!Chua lam 8. Xoa phuong tien trong thanh pho                                  |\n");
     printf("\t\t|   0. Thoat chuong trinh                                                           |\n");
@@ -102,21 +105,10 @@ int main() {
             }
             case 3:
             {
-                phuongTien pt[200];
-                ifstream filecount;
-                filecount.open("soluongphuongtien.txt", ios_base::in);
-                int soLuongPhuongTien;
-                filecount >> soLuongPhuongTien;
-                filecount.close();
-                ifstream filein;
-                filein.open("thongtinxe.txt", ios_base::in);
-                for(int i = 0; i < soLuongPhuongTien; ++i){
-    	             pt[i].docFile(filein);
-                     pt[i].thongTinXe();
-                     cout << "\n";
-	             }
-                 filein.close();
-                 break;
+                LinkedList *list = new LinkedList();
+                list->readFile();
+                list->printList();
+                break;
             }
             case 4:
             {
@@ -129,154 +121,58 @@ int main() {
                     {
                     case 1:
                     {
-                        phuongTien pt[200];
-                        ifstream filecount;
-                        filecount.open("soluongphuongtienHaiChau.txt", ios_base::in);
-                        int soLuongPhuongTien;
-                        filecount >> soLuongPhuongTien;
-                        filecount.close();
-                        ifstream filein;
-                        filein.open("HAI CHAU.txt", ios_base::in);
-                        for(int i = 0; i < soLuongPhuongTien; ++i){
-                            cout << "\n";
-                            pt[i].docFile(filein);
-                            pt[i].thongTinXe();
-                            cout << "\n";
-                        }
-                        filein.close();
+                        LinkedList *list = new LinkedList();
+                        list->readFileByRegion1();
+                        list->printList();
                         break;
                     }
                      case 2:
                     {
-                        phuongTien pt[200];
-                        ifstream filecount;
-                        filecount.open("soluongphuongtienThanhKhe.txt", ios_base::in);
-                        int soLuongPhuongTien;
-                        filecount >> soLuongPhuongTien;
-                        filecount.close();
-                        ifstream filein;
-                        filein.open("THANH KHE.txt", ios_base::in);
-                        for(int i = 0; i < soLuongPhuongTien; ++i){
-                            cout << "\n";
-                            pt[i].docFile(filein);
-                            pt[i].thongTinXe();
-                            cout << "\n";
-                        }
-                        filein.close();
+                        LinkedList *list = new LinkedList();
+                        list->readFileByRegion2();
+                        list->printList();
                         break;
                     }
                      case 3:
                     {
-                        phuongTien pt[200];
-                        ifstream filecount;
-                        filecount.open("soluongphuongtienCamLe.txt", ios_base::in);
-                        int soLuongPhuongTien;
-                        filecount >> soLuongPhuongTien;
-                        filecount.close();
-                        ifstream filein;
-                        filein.open("CAM LE.txt", ios_base::in);
-                        for(int i = 0; i < soLuongPhuongTien; ++i){
-                            cout << "\n";
-                            pt[i].docFile(filein);
-                            pt[i].thongTinXe();
-                            cout << "\n";
-                        }
-                        filein.close();
+                        LinkedList *list = new LinkedList();
+                        list->readFileByRegion3();
+                        list->printList();
                         break;
                     }
                      case 4:
                     {
-                        phuongTien pt[200];
-                        ifstream filecount;
-                        filecount.open("soluongphuongtienLienChieu.txt", ios_base::in);
-                        int soLuongPhuongTien;
-                        filecount >> soLuongPhuongTien;
-                        filecount.close();
-                        ifstream filein;
-                        filein.open("LIEN CHIEU.txt", ios_base::in);
-                        for(int i = 0; i < soLuongPhuongTien; ++i){
-                            cout << "\n";
-                            pt[i].docFile(filein);
-                            pt[i].thongTinXe();
-                            cout << "\n";
-                        }
-                        filein.close();
+                        LinkedList *list = new LinkedList();
+                        list->readFileByRegion4();
+                        list->printList();
                         break;
                     }
                      case 5:
                     {
-                        phuongTien pt[200];
-                        ifstream filecount;
-                        filecount.open("soluongphuongtienNguHanhSon.txt", ios_base::in);
-                        int soLuongPhuongTien;
-                        filecount >> soLuongPhuongTien;
-                        filecount.close();
-                        ifstream filein;
-                        filein.open("NGU HANH SON.txt", ios_base::in);
-                        for(int i = 0; i < soLuongPhuongTien; ++i){
-                            cout << "\n";
-                            pt[i].docFile(filein);
-                            pt[i].thongTinXe();
-                            cout << "\n";
-                        }
-                        filein.close();
+                        LinkedList *list = new LinkedList();
+                        list->readFileByRegion5();
+                        list->printList();
                         break;
                     }
                      case 6:
                     {
-                        phuongTien pt[200];
-                        ifstream filecount;
-                        filecount.open("soluongphuongtienSonTra.txt", ios_base::in);
-                        int soLuongPhuongTien;
-                        filecount >> soLuongPhuongTien;
-                        filecount.close();
-                        ifstream filein;
-                        filein.open("SON TRA.txt", ios_base::in);
-                        for(int i = 0; i < soLuongPhuongTien; ++i){
-                            cout << "\n";
-                            pt[i].docFile(filein);
-                            pt[i].thongTinXe();
-                            cout << "\n";
-                        }
-                        filein.close();
+                        LinkedList *list = new LinkedList();
+                        list->readFileByRegion6();
+                        list->printList();
                         break;
                     }
                      case 7:
                     {
-                        phuongTien pt[200];
-                        ifstream filecount;
-                        filecount.open("soluongphuongtienHoaVang.txt", ios_base::in);
-                        int soLuongPhuongTien;
-                        filecount >> soLuongPhuongTien;
-                        filecount.close();
-                        ifstream filein;
-                        filein.open("HOA VANG.txt", ios_base::in);
-                        for(int i = 0; i < soLuongPhuongTien; ++i){
-                            cout << "\n";
-                            pt[i].docFile(filein);
-                            pt[i].thongTinXe();
-                            cout << "\n";
-                        }
-                        filein.close();
+                        LinkedList *list = new LinkedList();
+                        list->readFileByRegion7();
+                        list->printList();
                         break;
                     }
                      case 8:
                     {
-                        phuongTien pt[200];
-                        ifstream filecount;
-                        filecount.open("soluongphuongtienHoangSa.txt", ios_base::in);
-                        int soLuongPhuongTien;
-                        filecount >> soLuongPhuongTien;
-                        filecount.close();
-                        ifstream filein;
-                        filein.open("HOANG SA.txt", ios_base::in);
-                        for(int i = 0; i < soLuongPhuongTien; ++i){
-                            cout << "\n";
-                            pt[i].docFile(filein);
-                            pt[i].thongTinXe();
-                            cout << "\n";
-                        }
-                        filein.close();
+                        LinkedList *list = new LinkedList();
+                        list->readFileByRegion8();
+                        list->printList();
                         break;
                     }
                     
@@ -333,6 +229,12 @@ int main() {
                 cout << "\t" << "_ Huyen Hoa Vang:" << "\t\t" << slptHV << endl;
                 cout << "\t" << "_ Huyen Hoang Sa:" << "\t\t" << slptHS << endl;
                 cout << "\t" << "_ Toan thanh pho:" << "\t\t" << slpt << endl;
+            }
+            case 6:
+            {
+                LinkedList *list = new LinkedList();
+                list->readFile();
+                list->searchNode();
             }
         }
     }while(sel != 0);   

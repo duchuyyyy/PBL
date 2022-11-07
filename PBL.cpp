@@ -5,6 +5,19 @@ using namespace std;
 
 
 phuongTien::phuongTien(){}
+phuongTien::phuongTien(string tenChuXe, string canCuocCongDan, string hangSanXuat, string loaiXe, string mauXe, string tenXe, string bienSoXe, int ngayDangKyXe, int thangDangKyXe, int namDangKyXe, string noiDangKyXe){
+        this->tenChuXe = tenChuXe;
+        this->canCuocCongDan = canCuocCongDan;
+        this->hangSanXuat = hangSanXuat;
+        this->loaiXe = loaiXe;
+        this->mauXe = mauXe;
+        this->tenXe = tenXe;
+        this->bienSoXe = bienSoXe;
+        this->ngayDangKyXe = ngayDangKyXe;
+        this->thangDangKyXe = thangDangKyXe;
+        this->namDangKyXe = namDangKyXe;
+        this->noiDangKyXe = noiDangKyXe;
+}
 void phuongTien::setData(string tenChuXe, string canCuocCongDan, string hangSanXuat, string loaiXe, string mauXe, string tenXe, string bienSoXe, int ngayDangKyXe, int thangDangKyXe, int namDangKyXe, string noiDangKyXe){
 	    this->tenChuXe = tenChuXe;
         this->canCuocCongDan = canCuocCongDan;
@@ -165,6 +178,18 @@ void phuongTien::thongTinXe(){
         cout << this->bienSoXe << endl;
         cout << "Ngay/thang/nam dang ky xe: " << this->ngayDangKyXe <<"/" << this->thangDangKyXe << "/" << this->namDangKyXe;
         cout << this->noiDangKyXe;
+}
+void phuongTien::thongTinXe2(){
+        cout << "Ten chu xe: " << this->tenChuXe << endl;
+        cout << "So can cuoc cong dan: " << this->canCuocCongDan << endl;
+ 	    cout << "Hang xe: " << this->hangSanXuat << endl;
+        cout << "Loai xe: " << this->loaiXe << endl;
+        cout << "Mau xe: " << this->mauXe << endl;
+        cout << "Ten xe: " << this->tenXe << endl;
+        cout << "Bien so xe: " << this->bienSoXe << endl;
+        cout << "Ngay/thang/nam dang ky xe: " << this->ngayDangKyXe <<"/" << this->thangDangKyXe << "/" << this->namDangKyXe << endl;
+        cout << "Noi dang ky xe: " << this->noiDangKyXe;
+        cout << endl;
 }
 /*void phuongTien::thongTinPhuongTienKhuVuc(){
     string khuVuc;
@@ -366,7 +391,7 @@ void luaChonTimKiem(){
     printf("\t\t|            1. Tim theo can cuoc cong dan                      |\n");
     printf("\t\t|            2. Tim theo ten chu phuong tien                    |\n");
     printf("\t\t|            3. Tim theo bien so xe                             |\n");
-    printf("\t\t|            4. Tim theo khu                                    |\n");
+    printf("\t\t|            4. Tim theo khu vuc                                |\n");
     printf("\t\t|            0. Thoat                                           |\n");
     printf("\t\t----------------------------------------------------------------\n");
 }

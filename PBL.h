@@ -18,6 +18,7 @@ class phuongTien {
     string noiDangKyXe;
 public:
     phuongTien();
+    phuongTien(string tenChuXe, string canCuocCongDan, string hangSanXuat, string loaiXe, string mauXe, string tenXe, string bienSoXe, int ngayDangKyXe, int thangDangKyXe, int namDangKyXe, string noiDangKyXe);
     void setData(string tenChuXe, string canCuocCongDan, string hangSanXuat, string loaiXe, string mauXe, string tenXe, string bienSoXe, int ngayDangKyXe, int thangDangKyXe, int namDangKyXe, string noiDangKyXe);
     void nhapThongTin();
     string getTenChuXe();
@@ -32,6 +33,7 @@ public:
     int getNamDangKyXe(); 
     string getNoiDangKyXe();
     void thongTinXe(); 
+    void thongTinXe2();
     bool checkYear(int y);
     bool checkInput(int d, int m, int y);
     void input(int& d, int& m, int& y);
