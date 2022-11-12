@@ -12,7 +12,7 @@ class LinkedList {
     public:
     LinkedList();
     ~LinkedList();
-
+    void writeFile();
     void readFile();
     void readFileByRegion1();
     void readFileByRegion2();

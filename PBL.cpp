@@ -1,8 +1,25 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<fstream>
 #include<windows.h>
 #include"PBL.h"
 using namespace std;
 
+void upperCase(string &s1){
+	for(int i = 0; i < s1.size(); ++i){
+		s1[i] = toupper(s1[i]);
+	}
+}
+void chuyenDoi(string &x){
+	for(int i=0; i<x.length(); i++){
+		if (i==0|| (i>0 && x[i-1]==32)){
+			if(x[i]>=97 && x[i]<=122)
+				x[i]=x[i]-32;	
+		}else{
+			if(x[i]>=65 && x[i]<=90)
+				x[i]=x[i]+32;	
+		}
+	}
+}
 
 phuongTien::phuongTien(){}
 phuongTien::phuongTien(string tenChuXe, string canCuocCongDan, string hangSanXuat, string loaiXe, string mauXe, string tenXe, string bienSoXe, int ngayDangKyXe, int thangDangKyXe, int namDangKyXe, string noiDangKyXe){
@@ -128,6 +145,25 @@ int phuongTien::day(int d, int m, int y){
         }
         return d;
 }
+void phuongTien::checkCanCuocCongDan(string &canCuocCongDan) {
+    a: 
+            //cin.ignore();
+            getline(cin, canCuocCongDan);
+            if(canCuocCongDan.length() != 12) {
+                cout << "Nhap sai so can cuoc cong dan. Vui long nhap lai!" << endl;
+                goto a;
+            }
+}
+void phuongTien::checkNoiDangKyXe(string &noiDangKyXe) {
+    a: 
+            getline(cin, noiDangKyXe);
+            chuyenDoi(noiDangKyXe);
+            if(noiDangKyXe != "Thanh Khe" && noiDangKyXe != "Hai Chau" && noiDangKyXe != "Lien Chieu" && noiDangKyXe != "Cam Le" && noiDangKyXe != "Hoa Vang"
+            && noiDangKyXe != "Hoang Sa" && noiDangKyXe != "Ngu Hanh Son" && noiDangKyXe != "Son Tra") {
+                cout << "Quan/Huyen ban nhap khong ton tai. Vui long nhap lai!" << endl;
+                goto a;
+            }
+}
 void phuongTien::kiemTraKiemDinh(int d, int m, int y){
         //int d, m, y;
         //cout << "Nhap ngay kiem dinh: " << endl;
@@ -152,7 +188,7 @@ void phuongTien::nhapThongTin(){
     cout << "Nhap ho ten chu xe: " << endl;
     getline(cin,this->tenChuXe);
     cout << "Nhap can cuoc cong dan: " << endl;
-    getline(cin, this->canCuocCongDan);
+    this->checkCanCuocCongDan(this->canCuocCongDan);
     cout << "Nhap hang xe: " << endl;
     getline(cin,this->hangSanXuat);
     cout << "Nhap loai xe: " << endl;
@@ -164,7 +200,7 @@ void phuongTien::nhapThongTin(){
     cout << "Nhap bien so xe: " << endl;
     getline(cin,this->bienSoXe);
     cout << "Nhap noi dang ky xe: " << endl;
-    getline(cin,this->noiDangKyXe);
+    this->checkNoiDangKyXe(this->noiDangKyXe);
     cout << "Nhap ngay, thang, nam dang ky xe: " << endl;
     this->input(this->ngayDangKyXe, this->thangDangKyXe, this->namDangKyXe);
 }
@@ -215,11 +251,6 @@ void phuongTien::docFile(ifstream &filein){
 	filein >> this->thangDangKyXe;
 	filein >> this->namDangKyXe;
 	getline(filein, this->noiDangKyXe, '.');
-}
-void upperCase(string &s1){
-	for(int i = 0; i < s1.size(); ++i){
-		s1[i] = toupper(s1[i]);
-	}
 }
 void phuongTien::nhapPhuongTienVaoFile(){
 	this->nhapThongTin();

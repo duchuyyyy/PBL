@@ -1,6 +1,8 @@
 #ifndef PBL_h
 #define PBL_h
-#include<bits/stdc++.h>
+#include<iostream>
+#include<string>
+#include<fstream>
 #include<windows.h>
 using namespace std;
 
@@ -39,6 +41,8 @@ public:
     void input(int& d, int& m, int& y);
     int dmax(int m, int y);
     int day(int d, int m, int y);
+    void checkCanCuocCongDan(string &canCuocCongDan);
+    void checkNoiDangKyXe(string &noiDangKyXe);
     void kiemTraKiemDinh(int d, int m, int y);
     void thongTinPhuongTienKhuVuc();
     void docFile(ifstream &filein);

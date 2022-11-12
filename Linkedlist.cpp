@@ -1,6 +1,8 @@
-#include "Linkedlist.h"
-#include<bits/stdc++.h>
+#include<iostream>
+#include<fstream>
+#include<string>
 using namespace std;
+#include "Linkedlist.h"
 LinkedList::LinkedList() {
 	this->size = 0;
 	this->pHead = NULL;
@@ -13,6 +15,26 @@ LinkedList::~LinkedList() {
 		currentNode->next = NULL;
 		delete currentNode;
 	}
+}
+void LinkedList::writeFile() {
+	ofstream fileout; 
+	fileout.open("thongtinxe.txt", ios_base::trunc);
+	Node* currentNode = this->pHead;
+	while(currentNode != NULL) {
+	fileout << "Ten chu xe: " << currentNode->pt.getTenChuXe() << "," << endl;
+    fileout << "So can cuoc cong dan: " << currentNode->pt.getCanCuocCongDan() << "." << endl;
+	fileout << "Hang xe: " << currentNode->pt.getHangSanXuat() << "," << endl;
+    fileout << "Loai xe: " << currentNode->pt.getLoaiXe() << "," << endl;
+    fileout << "Mau xe: " << currentNode->pt.getMauXe() << "," << endl;
+    fileout << "Ten xe: " << currentNode->pt.getTenXe() << "," << endl;
+	fileout << "Bien so xe: " << currentNode->pt.getBienSoXe() << "," << endl;
+	fileout << currentNode->pt.getNgayDangKyXe() << endl;
+	fileout << currentNode->pt.getThangDangKyXe() << endl;
+	fileout << currentNode->pt.getNamDangKyXe() << endl;
+	fileout << "Noi dang ky xe: " << currentNode->pt.getNoiDangKyXe() << "." <<  endl;
+	currentNode = currentNode->next;
+	}
+    fileout.close();
 }
 void LinkedList::readFile(){
 	ifstream filecount;
@@ -501,51 +523,6 @@ void LinkedList::pushBack(phuongTien pt){
         temp->next = newNode;
       }    
 }
-void LinkedList::deleteNode(string canCuocCongDan) {
-	if (this->pHead == NULL) return;
-
-	Node* preNode = NULL;
-	Node* currentNode = this->pHead; 
-	while (currentNode != NULL) {
-		if (currentNode->pt.getCanCuocCongDan() == canCuocCongDan) { 
-			if (preNode == NULL) {
-				// delete front
-				this->pHead = this->pHead->next;
-				if (this->pHead == NULL) {
-					this->pTail = NULL;
-				} 
-			}
-			else if (this->pTail == currentNode) {
-				// delete last
-				if (preNode != NULL) {
-					preNode->next = NULL;
-				}
-				this->pTail = preNode;
-			}
-			else {
-				// delete in the middle
-				preNode->next = currentNode->next;
-			}
-			currentNode->next = NULL;
-			delete currentNode;
-			this->size--;
-			return;
-		}
-		preNode = currentNode;
-		currentNode = currentNode->next;
-	}
-}
-void LinkedList::printList() {
-	cout << endl;
-	cout << "Danh sach cac phuong tien: " << endl;
-	cout << endl;
-	Node* currentNode = this->pHead;
-	while (currentNode != NULL) {
-		currentNode->printData();
-		cout << endl;
-		currentNode = currentNode->next;
-	}
-}
 int checkStr(string s1, string s2){
     int flag = 1;
     int n = 0;
@@ -557,6 +534,73 @@ int checkStr(string s1, string s2){
       n++;
    }
    return flag;
+}
+
+void LinkedList::deleteNode(string canCuocCongDan)
+{
+    Node *currentNode=this->pHead;
+    if (currentNode == NULL)
+	{
+		cout<<"Danh sach rong !!";
+	}
+	else
+	{
+		Node *preNode=NULL;
+		while (currentNode != NULL)
+		{
+           if (checkStr(currentNode->pt.getCanCuocCongDan(),canCuocCongDan)==1)
+		   {
+			break;
+		   }
+		   preNode=currentNode;
+		   currentNode=currentNode->next;
+		}
+		if (currentNode==NULL)
+		{
+			cout<<"Khong tim thay phuong tien !!"<<endl;
+		}
+		else
+		{
+			if (currentNode == this->pHead)
+			{
+				this->pHead=this->pHead->next;
+			}
+			else if (currentNode->next == NULL )
+			{
+				this->pTail=preNode;
+			}
+			else
+			{
+				preNode->next=currentNode->next;
+			}
+			currentNode->next = NULL;
+			delete currentNode;
+			currentNode=NULL;
+			ifstream filein;
+            filein.open("soluongphuongtien.txt", ios_base::in);
+            int count;
+            filein >> count;
+            count--;
+            filein.close();
+            ofstream fileout;
+            fileout.open("soluongphuongtien.txt", ios_base::out);
+            fileout << count;
+            fileout.close();        
+		}
+
+	}
+
+}
+void LinkedList::printList() {
+	cout << endl;
+	cout << "Danh sach cac phuong tien: " << endl;
+	cout << endl;
+	Node* currentNode = this->pHead;
+	while (currentNode != NULL) {
+		currentNode->printData();
+		cout << endl;
+		currentNode = currentNode->next;
+	}
 }
 int LinkedList::searchNode() {
 	string canCuocCongDan;

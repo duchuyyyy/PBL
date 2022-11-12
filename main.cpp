@@ -1,4 +1,5 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<string>
 #include<windows.h>
 #include"PBL.cpp"
 #include"Node.cpp"
@@ -32,10 +33,13 @@ void menu(){
     printf("\t\t|   3. In ra tat ca cac phuong tien trong thanh pho                                 |\n");
     printf("\t\t|   4. In ra phuong tien theo khu vuc                                               |\n");
     printf("\t\t|   5. Thong ke so luong phuong tien theo khu vuc                                   |\n");
-    printf("\t\t|   //*Dang lam 6. Tim kiem phuong tien trong thanh pho                             |\n");
-    printf("\t\t|   //!Chua lam 7. Sap xep cac phuong tien theo hang                                |\n");
-    printf("\t\t|   //!Chua lam 8. Xoa phuong tien trong thanh pho                                  |\n");
+    printf("\t\t|   6. Tim kiem phuong tien trong thanh pho                                         |\n");
+    printf("\t\t|   7. Xoa phuong tien trong thanh pho                                              |\n");
+    printf("\t\t|   //!Chua lam 8. Xoa phuong tien trong thanh pho (Chua xoa trong file khu vuc)    |\n");
+    printf("\t\t|   //!Chua lam 9. Cap nhat thong tin phuong tien                                   |\n");
+    printf("\t\t|   //!Chua lam 10. Sap xep cac phuong  tien                                        |\n");
     printf("\t\t|   0. Thoat chuong trinh                                                           |\n");
+    printf("\t\t|                                                                                   |\n");
     printf("\t\t-------------------------------------------------------------------------------------\n");
 }
 void khuVuc(){
@@ -229,12 +233,27 @@ int main() {
                 cout << "\t" << "_ Huyen Hoa Vang:" << "\t\t" << slptHV << endl;
                 cout << "\t" << "_ Huyen Hoang Sa:" << "\t\t" << slptHS << endl;
                 cout << "\t" << "_ Toan thanh pho:" << "\t\t" << slpt << endl;
+                break;
             }
             case 6:
             {
                 LinkedList *list = new LinkedList();
                 list->readFile();
                 list->searchNode();
+                break;
+            }
+            case 7:
+            {
+                LinkedList *list = new LinkedList();
+                string canCuocCongDan;
+                list->readFile();
+                cin.ignore();
+                cout << "Nhap so can cuoc cong dan cua phuong tien muon xoa : ";
+                getline(cin, canCuocCongDan);
+                list->deleteNode(canCuocCongDan);
+                list->printList();
+                list->writeFile();
+                break;
             }
         }
     }while(sel != 0);   
