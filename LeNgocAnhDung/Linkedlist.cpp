@@ -27,14 +27,46 @@ void checkCanCuoc(string canCuocCongDan)
             goto a;
         }
 }
-void LinkedList::readFile(){
-	ifstream filecount;
-	filecount.open("soluongphuongtien.txt", ios_base::in);
-	int slpt;
-	filecount >> slpt;
-	filecount.close();
+void LinkedList::docFile(int n, int sel)
+{
 	ifstream filein;
-	filein.open("thongtinxe.txt", ios_base::in);
+	if(sel==1)
+	{
+	   filein.open("HAI CHAU.txt",ios_base::in); 
+	}
+	else if(sel==2)
+	{
+		filein.open("THANH KHE.txt",ios_base::in);
+	}
+	else if(sel==3)
+	{
+	    filein.open("CAM LE.txt", ios_base::in);
+	}
+	else if(sel==4)
+	{
+	    filein.open("LIEN CHIEU.txt", ios_base::in);
+	}
+	else if(sel==5)
+	{
+	    filein.open("NGU HANH SON.txt", ios_base::in);
+	}
+	else if(sel==6)
+	{
+	    filein.open("SON TRA.txt", ios_base::in);
+	}
+	else if(sel==7)
+	{
+	    filein.open("HOA VANG.txt", ios_base::in);
+	}
+	else if(sel==8)
+	{
+	    filein.open("HOANG SA.txt", ios_base::in);
+	}
+	else if (sel==0)
+	{
+		filein.open("thongtinxe.txt",ios_base::in);
+	}
+	
 	string tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe;
 	string tenXe;
     string bienSoXe;
@@ -44,7 +76,7 @@ void LinkedList::readFile(){
     string noiDangKyXe;
     string temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9,temp10 ,temp11, temp12,temp13, temp14 
 	,temp15,temp16;
-	for(int i = 0; i < slpt; ++i){
+	for(int i = 0; i < n; ++i){
     getline(filein, temp1, ':');
     getline(filein, temp2, ' ');
     getline(filein, tenChuXe, ',');
@@ -76,54 +108,22 @@ void LinkedList::readFile(){
 	this->pushBack(*new_pt);
 	}
 }
+void LinkedList::readFile(){
+	ifstream filecount;
+	filecount.open("soluongphuongtien.txt", ios_base::in);
+	int slpt;
+	filecount >> slpt;
+	filecount.close();
+	docFile(slpt,0);
+}
+
 void LinkedList::readFileByRegion1(){
 	ifstream filecount;
 	filecount.open("soluongphuongtienHaiChau.txt", ios_base::in);
 	int slpt;
 	filecount >> slpt;
 	filecount.close();
-	ifstream filein;
-	filein.open("HAI CHAU.txt", ios_base::in);
-	string tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe;
-	string tenXe;
-    string bienSoXe;
-    int ngayDangKyXe;
-    int thangDangKyXe;
-    int namDangKyXe;
-    string noiDangKyXe;
-    string temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9,temp10 ,temp11, temp12,temp13, temp14 
-	,temp15,temp16;
-	for(int i = 0; i < slpt; ++i){
-    getline(filein, temp1, ':');
-    getline(filein, temp2, ' ');
-    getline(filein, tenChuXe, ',');
-    getline(filein, temp3, ':');
-    getline(filein, temp4, ' ');
-    getline(filein, canCuocCongDan, '.');
-    getline(filein, temp5, ':');
-    getline(filein, temp6, ' ');
-    getline(filein, hangSanXuat, ',');
-    getline(filein, temp7, ':');
-    getline(filein, temp8, ' ');
-    getline(filein, loaiXe, ',');
-    getline(filein, temp9, ':' );
-	getline(filein, temp10 ,' ');
-	getline(filein, mauXe, ',');
-	getline(filein, temp11, ':');
-    getline(filein, temp12, ' ');
-    getline(filein, tenXe, ',');
-    getline(filein, temp13, ':');
-    getline(filein, temp14, ' ');
-    getline(filein, bienSoXe, ',');
-	filein >> ngayDangKyXe ;
-	filein >> thangDangKyXe ;
-	filein >> namDangKyXe;
-    getline(filein, temp15, ':');
-    getline(filein, temp16, ' ');
-    getline(filein, noiDangKyXe, '.');
-	phuongTien* new_pt = new phuongTien(tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe, tenXe, bienSoXe, ngayDangKyXe, thangDangKyXe, namDangKyXe, noiDangKyXe);
-	this->pushBack(*new_pt);
-	}
+	docFile(slpt,1);
 }
 void LinkedList::readFileByRegion2(){
 	ifstream filecount;
@@ -131,48 +131,7 @@ void LinkedList::readFileByRegion2(){
 	int slpt;
 	filecount >> slpt;
 	filecount.close();
-	ifstream filein;
-	filein.open("THANH KHE.txt", ios_base::in);
-	string tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe;
-	string tenXe;
-    string bienSoXe;
-    int ngayDangKyXe;
-    int thangDangKyXe;
-    int namDangKyXe;
-    string noiDangKyXe;
-    string temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9,temp10 ,temp11, temp12,temp13, temp14 
-	,temp15,temp16;
-	for(int i = 0; i < slpt; ++i){
-    getline(filein, temp1, ':');
-    getline(filein, temp2, ' ');
-    getline(filein, tenChuXe, ',');
-    getline(filein, temp3, ':');
-    getline(filein, temp4, ' ');
-    getline(filein, canCuocCongDan, '.');
-    getline(filein, temp5, ':');
-    getline(filein, temp6, ' ');
-    getline(filein, hangSanXuat, ',');
-    getline(filein, temp7, ':');
-    getline(filein, temp8, ' ');
-    getline(filein, loaiXe, ',');
-    getline(filein, temp9, ':' );
-	getline(filein, temp10 ,' ');
-	getline(filein, mauXe, ',');
-	getline(filein, temp11, ':');
-    getline(filein, temp12, ' ');
-    getline(filein, tenXe, ',');
-    getline(filein, temp13, ':');
-    getline(filein, temp14, ' ');
-    getline(filein, bienSoXe, ',');
-	filein >> ngayDangKyXe ;
-	filein >> thangDangKyXe ;
-	filein >> namDangKyXe;
-    getline(filein, temp15, ':');
-    getline(filein, temp16, ' ');
-    getline(filein, noiDangKyXe, '.');
-	phuongTien* new_pt = new phuongTien(tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe, tenXe, bienSoXe, ngayDangKyXe, thangDangKyXe, namDangKyXe, noiDangKyXe);
-	this->pushBack(*new_pt);
-	}
+	docFile(slpt,2);
 }
 void LinkedList::readFileByRegion3(){
 	ifstream filecount;
@@ -180,48 +139,7 @@ void LinkedList::readFileByRegion3(){
 	int slpt;
 	filecount >> slpt;
 	filecount.close();
-	ifstream filein;
-	filein.open("CAM LE.txt", ios_base::in);
-	string tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe;
-	string tenXe;
-    string bienSoXe;
-    int ngayDangKyXe;
-    int thangDangKyXe;
-    int namDangKyXe;
-    string noiDangKyXe;
-    string temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9,temp10 ,temp11, temp12,temp13, temp14 
-	,temp15,temp16;
-	for(int i = 0; i < slpt; ++i){
-    getline(filein, temp1, ':');
-    getline(filein, temp2, ' ');
-    getline(filein, tenChuXe, ',');
-    getline(filein, temp3, ':');
-    getline(filein, temp4, ' ');
-    getline(filein, canCuocCongDan, '.');
-    getline(filein, temp5, ':');
-    getline(filein, temp6, ' ');
-    getline(filein, hangSanXuat, ',');
-    getline(filein, temp7, ':');
-    getline(filein, temp8, ' ');
-    getline(filein, loaiXe, ',');
-    getline(filein, temp9, ':' );
-	getline(filein, temp10 ,' ');
-	getline(filein, mauXe, ',');
-	getline(filein, temp11, ':');
-    getline(filein, temp12, ' ');
-    getline(filein, tenXe, ',');
-    getline(filein, temp13, ':');
-    getline(filein, temp14, ' ');
-    getline(filein, bienSoXe, ',');
-	filein >> ngayDangKyXe ;
-	filein >> thangDangKyXe ;
-	filein >> namDangKyXe;
-    getline(filein, temp15, ':');
-    getline(filein, temp16, ' ');
-    getline(filein, noiDangKyXe, '.');
-	phuongTien* new_pt = new phuongTien(tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe, tenXe, bienSoXe, ngayDangKyXe, thangDangKyXe, namDangKyXe, noiDangKyXe);
-	this->pushBack(*new_pt);
-	}
+	docFile(slpt,3);
 }
 void LinkedList::readFileByRegion4(){
 	ifstream filecount;
@@ -229,48 +147,7 @@ void LinkedList::readFileByRegion4(){
 	int slpt;
 	filecount >> slpt;
 	filecount.close();
-	ifstream filein;
-	filein.open("LIEN CHIEU.txt", ios_base::in);
-	string tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe;
-	string tenXe;
-    string bienSoXe;
-    int ngayDangKyXe;
-    int thangDangKyXe;
-    int namDangKyXe;
-    string noiDangKyXe;
-    string temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9,temp10 ,temp11, temp12,temp13, temp14 
-	,temp15,temp16;
-	for(int i = 0; i < slpt; ++i){
-    getline(filein, temp1, ':');
-    getline(filein, temp2, ' ');
-    getline(filein, tenChuXe, ',');
-    getline(filein, temp3, ':');
-    getline(filein, temp4, ' ');
-    getline(filein, canCuocCongDan, '.');
-    getline(filein, temp5, ':');
-    getline(filein, temp6, ' ');
-    getline(filein, hangSanXuat, ',');
-    getline(filein, temp7, ':');
-    getline(filein, temp8, ' ');
-    getline(filein, loaiXe, ',');
-    getline(filein, temp9, ':' );
-	getline(filein, temp10 ,' ');
-	getline(filein, mauXe, ',');
-	getline(filein, temp11, ':');
-    getline(filein, temp12, ' ');
-    getline(filein, tenXe, ',');
-    getline(filein, temp13, ':');
-    getline(filein, temp14, ' ');
-    getline(filein, bienSoXe, ',');
-	filein >> ngayDangKyXe ;
-	filein >> thangDangKyXe ;
-	filein >> namDangKyXe;
-    getline(filein, temp15, ':');
-    getline(filein, temp16, ' ');
-    getline(filein, noiDangKyXe, '.');
-	phuongTien* new_pt = new phuongTien(tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe, tenXe, bienSoXe, ngayDangKyXe, thangDangKyXe, namDangKyXe, noiDangKyXe);
-	this->pushBack(*new_pt);
-	}
+	docFile(slpt,4);
 }
 void LinkedList::readFileByRegion5(){
 	ifstream filecount;
@@ -278,48 +155,7 @@ void LinkedList::readFileByRegion5(){
 	int slpt;
 	filecount >> slpt;
 	filecount.close();
-	ifstream filein;
-	filein.open("NGU HANH SON.txt", ios_base::in);
-	string tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe;
-	string tenXe;
-    string bienSoXe;
-    int ngayDangKyXe;
-    int thangDangKyXe;
-    int namDangKyXe;
-    string noiDangKyXe;
-    string temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9,temp10 ,temp11, temp12,temp13, temp14 
-	,temp15,temp16;
-	for(int i = 0; i < slpt; ++i){
-    getline(filein, temp1, ':');
-    getline(filein, temp2, ' ');
-    getline(filein, tenChuXe, ',');
-    getline(filein, temp3, ':');
-    getline(filein, temp4, ' ');
-    getline(filein, canCuocCongDan, '.');
-    getline(filein, temp5, ':');
-    getline(filein, temp6, ' ');
-    getline(filein, hangSanXuat, ',');
-    getline(filein, temp7, ':');
-    getline(filein, temp8, ' ');
-    getline(filein, loaiXe, ',');
-    getline(filein, temp9, ':' );
-	getline(filein, temp10 ,' ');
-	getline(filein, mauXe, ',');
-	getline(filein, temp11, ':');
-    getline(filein, temp12, ' ');
-    getline(filein, tenXe, ',');
-    getline(filein, temp13, ':');
-    getline(filein, temp14, ' ');
-    getline(filein, bienSoXe, ',');
-	filein >> ngayDangKyXe ;
-	filein >> thangDangKyXe ;
-	filein >> namDangKyXe;
-    getline(filein, temp15, ':');
-    getline(filein, temp16, ' ');
-    getline(filein, noiDangKyXe, '.');
-	phuongTien* new_pt = new phuongTien(tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe, tenXe, bienSoXe, ngayDangKyXe, thangDangKyXe, namDangKyXe, noiDangKyXe);
-	this->pushBack(*new_pt);
-	}
+	docFile(slpt,5);
 }
 void LinkedList::readFileByRegion6(){
 	ifstream filecount;
@@ -327,48 +163,7 @@ void LinkedList::readFileByRegion6(){
 	int slpt;
 	filecount >> slpt;
 	filecount.close();
-	ifstream filein;
-	filein.open("SON TRA.txt", ios_base::in);
-	string tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe;
-	string tenXe;
-    string bienSoXe;
-    int ngayDangKyXe;
-    int thangDangKyXe;
-    int namDangKyXe;
-    string noiDangKyXe;
-    string temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9,temp10 ,temp11, temp12,temp13, temp14 
-	,temp15,temp16;
-	for(int i = 0; i < slpt; ++i){
-    getline(filein, temp1, ':');
-    getline(filein, temp2, ' ');
-    getline(filein, tenChuXe, ',');
-    getline(filein, temp3, ':');
-    getline(filein, temp4, ' ');
-    getline(filein, canCuocCongDan, '.');
-    getline(filein, temp5, ':');
-    getline(filein, temp6, ' ');
-    getline(filein, hangSanXuat, ',');
-    getline(filein, temp7, ':');
-    getline(filein, temp8, ' ');
-    getline(filein, loaiXe, ',');
-    getline(filein, temp9, ':' );
-	getline(filein, temp10 ,' ');
-	getline(filein, mauXe, ',');
-	getline(filein, temp11, ':');
-    getline(filein, temp12, ' ');
-    getline(filein, tenXe, ',');
-    getline(filein, temp13, ':');
-    getline(filein, temp14, ' ');
-    getline(filein, bienSoXe, ',');
-	filein >> ngayDangKyXe ;
-	filein >> thangDangKyXe ;
-	filein >> namDangKyXe;
-    getline(filein, temp15, ':');
-    getline(filein, temp16, ' ');
-    getline(filein, noiDangKyXe, '.');
-	phuongTien* new_pt = new phuongTien(tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe, tenXe, bienSoXe, ngayDangKyXe, thangDangKyXe, namDangKyXe, noiDangKyXe);
-	this->pushBack(*new_pt);
-	}
+	docFile(slpt,6);
 }
 void LinkedList::readFileByRegion7(){
 	ifstream filecount;
@@ -376,48 +171,7 @@ void LinkedList::readFileByRegion7(){
 	int slpt;
 	filecount >> slpt;
 	filecount.close();
-	ifstream filein;
-	filein.open("HOA VANG.txt", ios_base::in);
-	string tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe;
-	string tenXe;
-    string bienSoXe;
-    int ngayDangKyXe;
-    int thangDangKyXe;
-    int namDangKyXe;
-    string noiDangKyXe;
-    string temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9,temp10 ,temp11, temp12,temp13, temp14 
-	,temp15,temp16;
-	for(int i = 0; i < slpt; ++i){
-    getline(filein, temp1, ':');
-    getline(filein, temp2, ' ');
-    getline(filein, tenChuXe, ',');
-    getline(filein, temp3, ':');
-    getline(filein, temp4, ' ');
-    getline(filein, canCuocCongDan, '.');
-    getline(filein, temp5, ':');
-    getline(filein, temp6, ' ');
-    getline(filein, hangSanXuat, ',');
-    getline(filein, temp7, ':');
-    getline(filein, temp8, ' ');
-    getline(filein, loaiXe, ',');
-    getline(filein, temp9, ':' );
-	getline(filein, temp10 ,' ');
-	getline(filein, mauXe, ',');
-	getline(filein, temp11, ':');
-    getline(filein, temp12, ' ');
-    getline(filein, tenXe, ',');
-    getline(filein, temp13, ':');
-    getline(filein, temp14, ' ');
-    getline(filein, bienSoXe, ',');
-	filein >> ngayDangKyXe ;
-	filein >> thangDangKyXe ;
-	filein >> namDangKyXe;
-    getline(filein, temp15, ':');
-    getline(filein, temp16, ' ');
-    getline(filein, noiDangKyXe, '.');
-	phuongTien* new_pt = new phuongTien(tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe, tenXe, bienSoXe, ngayDangKyXe, thangDangKyXe, namDangKyXe, noiDangKyXe);
-	this->pushBack(*new_pt);
-	}
+	docFile(slpt,7);
 }
 void LinkedList::readFileByRegion8(){
 	ifstream filecount;
@@ -425,48 +179,7 @@ void LinkedList::readFileByRegion8(){
 	int slpt;
 	filecount >> slpt;
 	filecount.close();
-	ifstream filein;
-	filein.open("HOANG SA.txt", ios_base::in);
-	string tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe;
-	string tenXe;
-    string bienSoXe;
-    int ngayDangKyXe;
-    int thangDangKyXe;
-    int namDangKyXe;
-    string noiDangKyXe;
-    string temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9,temp10 ,temp11, temp12,temp13, temp14 
-	,temp15,temp16;
-	for(int i = 0; i < slpt; ++i){
-    getline(filein, temp1, ':');
-    getline(filein, temp2, ' ');
-    getline(filein, tenChuXe, ',');
-    getline(filein, temp3, ':');
-    getline(filein, temp4, ' ');
-    getline(filein, canCuocCongDan, '.');
-    getline(filein, temp5, ':');
-    getline(filein, temp6, ' ');
-    getline(filein, hangSanXuat, ',');
-    getline(filein, temp7, ':');
-    getline(filein, temp8, ' ');
-    getline(filein, loaiXe, ',');
-    getline(filein, temp9, ':' );
-	getline(filein, temp10 ,' ');
-	getline(filein, mauXe, ',');
-	getline(filein, temp11, ':');
-    getline(filein, temp12, ' ');
-    getline(filein, tenXe, ',');
-    getline(filein, temp13, ':');
-    getline(filein, temp14, ' ');
-    getline(filein, bienSoXe, ',');
-	filein >> ngayDangKyXe ;
-	filein >> thangDangKyXe ;
-	filein >> namDangKyXe;
-    getline(filein, temp15, ':');
-    getline(filein, temp16, ' ');
-    getline(filein, noiDangKyXe, '.');
-	phuongTien* new_pt = new phuongTien(tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe, tenXe, bienSoXe, ngayDangKyXe, thangDangKyXe, namDangKyXe, noiDangKyXe);
-	this->pushBack(*new_pt);
-	}
+	docFile(slpt,8);
 }
 int LinkedList::getSize() {
 	return this->size;
