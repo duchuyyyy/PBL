@@ -33,5 +33,6 @@ class LinkedList {
     void writeFileKhuVuc( string khuvuc);
     void update(string canCuocCongDan,string &khuvuc,string &hoTen,string &canCuoc,string &bienSoXe,string &mauXe);
     void updateKhuVuc(string canCuocCongDan,string khuvuc,string hoTen,string canCuoc,string bienSoXe,string mauXe);
+    void docFile(int n , int sel);
 };
 #endif
