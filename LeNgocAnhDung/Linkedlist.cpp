@@ -17,6 +17,16 @@ LinkedList::~LinkedList() {
 		delete currentNode;
 	}
 }
+void checkCanCuoc(string canCuocCongDan)
+{
+	a: 
+        //cin.ignore();
+        getline(cin, canCuocCongDan);
+        if(canCuocCongDan.length() != 12) {
+            cout << "Nhap sai so can cuoc cong dan. Vui long nhap lai!" << endl;
+            goto a;
+        }
+}
 void LinkedList::readFile(){
 	ifstream filecount;
 	filecount.open("soluongphuongtien.txt", ios_base::in);
@@ -582,7 +592,7 @@ void LinkedList::deleteNodeKhuVuc(string canCuocCongDan)
     Node *currentNode=this->pHead;
     if (currentNode == NULL)
 	{
-		cout<<"\nDanh sach rong !!"<<endl;
+		cout<<endl;
 	}
 	else
 	{
@@ -742,6 +752,7 @@ int LinkedList::searchNode() {
 	string canCuocCongDan;
 	cout << "Nhap so can cuoc cong dan can tim kiem: "  << endl;
 	cin >> canCuocCongDan;
+	checkCanCuoc(canCuocCongDan);
 	Node* currentNode = this->pHead;
 	while (currentNode != NULL) { 
 		if (checkStr(currentNode->pt.getCanCuocCongDan(),canCuocCongDan) == 1) {
@@ -777,10 +788,34 @@ void LinkedList::writeFile() {
 }
 void LinkedList::writeFileKhuVuc(string khuvuc) {
 	ofstream fileout; 
-	string s1;
-	s1 = ".txt";
-    string filename=khuvuc.append(s1);
-	fileout.open(filename, ios_base::trunc);
+    if (khuvuc=="HAI CHAU")
+	{
+		fileout.open("HAI CHAU.txt", ios_base::trunc);
+	}
+	else if (khuvuc=="HOANG SA")
+	{
+		fileout.open("HOANG SA.txt",ios_base::trunc);
+	}
+	else if (khuvuc=="LIEN CHIEU")
+	{
+		fileout.open("LIEN CHIEU.txt",ios_base::trunc);
+	}
+	else if (khuvuc=="HOA VANG")
+	{
+		fileout.open("HOA VANG.txt",ios_base::trunc);
+	}
+	else if (khuvuc=="THANH KHE")
+	{
+		fileout.open("THANH KHE.txt",ios_base::trunc);
+	}
+	else if (khuvuc=="NGU HANH SON")
+	{
+		fileout.open("NGU HANH SON.txt",ios_base::trunc);
+	}
+	else if (khuvuc=="SON TRA")
+	{
+		fileout.open("SON TRA.txt",ios_base::trunc);
+	}
 	Node* currentNode = this->pHead;
 	while(currentNode != NULL) {
 	fileout << "Ten chu xe: " << currentNode->pt.getTenChuXe() << "," << endl;
@@ -848,6 +883,7 @@ void LinkedList::update(string canCuocCongDan,string &khuvuc,string &hoTen,strin
 				cout<<endl;
 				cout<<"Can cuoc :";
 				getline(cin,canCuocmoi);
+				checkCanCuoc(canCuocmoi);
 				currentNode->pt.setTenchuxemoi(tenChumoi,canCuocmoi);
 				break;
 			}
