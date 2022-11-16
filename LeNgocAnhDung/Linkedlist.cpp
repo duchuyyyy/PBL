@@ -632,19 +632,16 @@ void LinkedList::update(string canCuocCongDan,string &khuvuc,string &hoTen,strin
 void LinkedList::updateKhuVuc(string canCuocCongDan,string khuvuc,string hoTen,string canCuoc,string bienSoXe,string mauXe)
 {
 	Node* currentNode = this->pHead;
-    
-		Node *preNode=NULL;
-		while (currentNode != NULL)
-		{
+        Node* preNode =NULL;
+		
            if (checkStr(currentNode->pt.getCanCuocCongDan(),canCuocCongDan)==1)
 		   {
-			break;
-		   }
-		   preNode=currentNode;
-		   currentNode=currentNode->next;
-		}
-			currentNode->pt.setTenchuxemoi(hoTen,canCuoc);
+			preNode=currentNode;
+		        currentNode=currentNode->next;
+	                currentNode->pt.setTenchuxemoi(hoTen,canCuoc);
 			currentNode->pt.setBienSomoi(bienSoXe);
 			currentNode->pt.setMauXemoi(mauXe);
+		   }
+		   
 			
 }
