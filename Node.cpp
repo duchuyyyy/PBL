@@ -21,8 +21,7 @@ string Node::getCanCuocCongDan(){
     int thangDangKyXe;
     int namDangKyXe;
     string noiDangKyXe;
-    string temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9,temp10 ,temp11, temp12,temp13, temp14 
-	,temp15,temp16;
+    string temp1, temp2, temp3, temp4, temp5, temp6, temp7, temp8, temp9,temp10 ,temp11, temp12,temp13, temp14,temp15,temp16;
     ifstream filein;
 	filein.open("thongtinxe.txt", ios_base::in);
     getline(filein, temp1, ':');

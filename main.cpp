@@ -1,10 +1,9 @@
 #include<iostream>
 #include<string>
 #include<windows.h>
-#include"PBL.cpp"
+#include "phuongtien.cpp"
 #include"Node.cpp"
 #include "Linkedlist.cpp"
-//#include "LinkedList.cpp"
 using namespace std;
 void title()//Tieu de
 {
@@ -35,11 +34,8 @@ void menu(){
     printf("\t\t|   5. Thong ke so luong phuong tien theo khu vuc                                   |\n");
     printf("\t\t|   6. Tim kiem phuong tien trong thanh pho                                         |\n");
     printf("\t\t|   7. Xoa phuong tien trong thanh pho                                              |\n");
-    printf("\t\t|   //!Chua lam 8. Xoa phuong tien trong thanh pho (Chua xoa trong file khu vuc)    |\n");
-    printf("\t\t|   //!Chua lam 9. Cap nhat thong tin phuong tien                                   |\n");
-    printf("\t\t|   //!Chua lam 10. Sap xep cac phuong  tien                                        |\n");
+    printf("\t\t|   8. Cap nhat phuong tien trong thanh pho                                         |\n");
     printf("\t\t|   0. Thoat chuong trinh                                                           |\n");
-    printf("\t\t|                                                                                   |\n");
     printf("\t\t-------------------------------------------------------------------------------------\n");
 }
 void khuVuc(){
@@ -69,6 +65,52 @@ int check(string s1, string s2){
       n++;
    }
    return flag;
+}
+void thongKeSoLuong() {
+    ifstream filecountHC, filecountTK, filecountLC, filecountHS;
+    ifstream filecountHV, filecountCL, filecountNHS, filecountST, filecount;
+    int slptHC, slptTK, slptLC, slptHS, slptHV, slptCL, slptNHS, slptST, slpt;
+    filecountHC.open("soluongphuongtienHaiChau.txt", ios_base::in);
+    filecountHC >> slptHC;
+    filecountHC.close();
+    filecountTK.open("soluongphuongtienThanhKhe.txt", ios_base::in);
+    filecountTK >> slptTK;
+    filecountTK.close();
+    filecountLC.open("soluongphuongtienLienChieu.txt", ios_base::in);
+    filecountLC >> slptLC;
+    filecountLC.close();
+    filecountHS.open("soluongphuongtienHoangSa.txt", ios_base::in);
+    filecountHS >> slptHS;
+    filecountHS.close();
+    filecountNHS.open("soluongphuongtienNguHanhSon.txt", ios_base::in);
+    filecountNHS >> slptNHS;
+    filecountNHS.close();
+    filecountHV.open("soluongphuongtienHoaVang.txt", ios_base::in);
+    filecountHV >> slptHV;
+    filecountHV.close();
+    filecountCL.open("soluongphuongtienCamLe.txt", ios_base::in);
+    filecountCL >> slptCL;
+    filecountCL.close();
+    filecountST.open("soluongphuongtienSonTra.txt", ios_base::in);
+    filecountST >> slptST;
+    filecountST.close();
+    filecount.open("soluongphuongtien.txt", ios_base::in);
+    filecount >> slpt;
+    filecount.close();
+    cout << "_________________________________________________________________" << endl;
+    cout << "|         THONG KE SO LUONG PHUONG TIEN THEO KHU VUC            |" << endl;
+    cout << "|_______________________________________________________________|" << endl;
+    cout << "|" << "\t" << "Quan Hai Chau:" << "\t\t" << slptHC   <<  "\t\t\t\t" <<  "|"  << endl;
+    cout << "|" << "\t" << "Quan Thanh Khe:" << "\t\t" << slptTK <<  "\t\t\t\t" <<  "|" << endl;
+    cout << "|" << "\t" << "Quan Cam Le:" <<  "\t\t" << slptCL <<   "\t\t\t\t" << "|" << endl;
+    cout << "|" << "\t" << "Quan Son Tra:" << "\t\t" << slptST <<  "\t\t\t\t"  << "|" << endl;
+    cout << "|" << "\t" << "Quan Ngu Hanh Son:" << "\t" << slptNHS << "\t\t\t\t" << "|" << endl;
+    cout << "|" << "\t" << "Quan Lien Chieu:" << "\t" << slptLC <<  "\t\t\t\t" << "|" << endl;
+    cout << "|" << "\t" << "Huyen Hoa Vang:" << "\t\t" << slptHV <<   "\t\t\t\t" <<  "|" << endl;
+    cout << "|" << "\t" << "Huyen Hoang Sa:" << "\t\t" << slptHS <<   "\t\t\t\t" << "|" << endl;
+    cout << "|_______________________________________________________________|" << endl;
+    cout << "|" << "\t" << "Toan thanh pho:" << "\t\t" << slpt <<    "\t\t\t\t"  <<   "|" << endl;
+    cout << "|_______________________________________________________________|" << endl;
 }
 int main() {
     title();
@@ -190,49 +232,7 @@ int main() {
             }
             case 5:
             {
-                ifstream filecountHC, filecountTK, filecountLC, filecountHS;
-                ifstream filecountHV, filecountCL, filecountNHS, filecountST, filecount;
-                int slptHC, slptTK, slptLC, slptHS, slptHV, slptCL, slptNHS, slptST, slpt;
-                filecountHC.open("soluongphuongtienHaiChau.txt", ios_base::in);
-                filecountHC >> slptHC;
-                filecountHC.close();
-                filecountTK.open("soluongphuongtienThanhKhe.txt", ios_base::in);
-                filecountTK >> slptTK;
-                filecountTK.close();
-                filecountLC.open("soluongphuongtienLienChieu.txt", ios_base::in);
-                filecountLC >> slptLC;
-                filecountLC.close();
-                filecountHS.open("soluongphuongtienHoangSa.txt", ios_base::in);
-                filecountHS >> slptHS;
-                filecountHS.close();
-                filecountNHS.open("soluongphuongtienNguHanhSon.txt", ios_base::in);
-                filecountNHS >> slptNHS;
-                filecountNHS.close();
-                filecountHV.open("soluongphuongtienHoaVang.txt", ios_base::in);
-                filecountHV >> slptHV;
-                filecountHV.close();
-                filecountCL.open("soluongphuongtienCamLe.txt", ios_base::in);
-                filecountCL >> slptCL;
-                filecountCL.close();
-                filecountST.open("soluongphuongtienSonTra.txt", ios_base::in);
-                filecountST >> slptST;
-                filecountST.close();
-                filecount.open("soluongphuongtien.txt", ios_base::in);
-                filecount >> slpt;
-                filecount.close();
-                //!Chinh lai cai bang
-                cout << "_____________________________________________________________" << endl;
-                cout << "|         THONG KE SO LUONG PHUONG TIEN THEO KHU VUC        |" << endl;
-                cout << "|___________________________________________________________|" << endl;
-                cout << "\t" << "_ Quan Hai Chau:" << "\t\t" << slptHC << endl;
-                cout << "\t" << "_ Quan Thanh Khe:" << "\t\t" << slptTK << endl;
-                cout << "\t" << "_ Quan Cam Le:" <<  "\t\t\t" << slptCL << endl;
-                cout << "\t" << "_ Quan Son Tra:" << "\t\t\t" << slptST << endl;
-                cout << "\t" << "_ Quan Ngu Hanh Son:" << "\t\t" << slptNHS << endl;
-                cout << "\t" << "_ Quan Lien Chieu:" << "\t\t" << slptLC << endl;
-                cout << "\t" << "_ Huyen Hoa Vang:" << "\t\t" << slptHV << endl;
-                cout << "\t" << "_ Huyen Hoang Sa:" << "\t\t" << slptHS << endl;
-                cout << "\t" << "_ Toan thanh pho:" << "\t\t" << slpt << endl;
+                thongKeSoLuong();
                 break;
             }
             case 6:
@@ -243,20 +243,105 @@ int main() {
                 break;
             }
             case 7:
-            {
+            {  
+                string khuvuc;
                 LinkedList *list = new LinkedList();
-                string canCuocCongDan;
+                string cancuoc;
                 list->readFile();
                 cin.ignore();
-                cout << "Nhap so can cuoc cong dan cua phuong tien muon xoa : ";
-                getline(cin, canCuocCongDan);
-                list->deleteNode(canCuocCongDan);
-                list->printList();
+                cout << "Phuong tien muon xoa cua chu xe co so cccd la : ";
+                getline(cin, cancuoc);
+                list->deleteNode(cancuoc,khuvuc);
                 list->writeFile();
+                upperCase(khuvuc);
+                //cout<<khuvuc;
+                LinkedList *list1 = new LinkedList();
+                if (khuvuc=="HAI CHAU")
+                {
+                    list1->readFileByRegion1();
+                } 
+                else if (khuvuc=="THANH KHE")
+                {
+                    list1->readFileByRegion2();
+                }
+                else if (khuvuc=="CAM LE")
+                {
+                   list1->readFileByRegion3();  
+                }
+                else if (khuvuc=="LIEN CHIEU")
+                {
+                   list1->readFileByRegion4();  
+                }
+                else if (khuvuc=="NGU HANH SON")
+                {
+                   list1->readFileByRegion5();  
+                }
+                else if (khuvuc=="SON TRA")
+                {
+                   list1->readFileByRegion6();  
+                }
+                else if (khuvuc=="HOA VANG")
+                {
+                   list1->readFileByRegion7();  
+                }
+                else if (khuvuc=="HOANG SA")
+                {
+                   list1->readFileByRegion8();  
+                }
+                list1->deleteNodeKhuVuc(cancuoc);   
+                list1->writeFileKhuVuc(khuvuc);
+                break;
+            }
+            case 8:
+            {
+                LinkedList *list = new LinkedList();
+                string canCuoc;
+                string khuvuc,hoTen,cancuoc,bienSoXe,mauXe;
+                list->readFile();
+                cin.ignore();
+                cout<<"Chu xe can cap nhat co so can cuoc la :";
+	            getline(cin,canCuoc);
+                list->update(canCuoc,khuvuc,hoTen,cancuoc,bienSoXe,mauXe);
+                list->writeFile();
+                upperCase(khuvuc);
+                LinkedList *list1 = new LinkedList();
+                if (khuvuc=="HAI CHAU")
+                {
+                    list1->readFileByRegion1();
+                } 
+                else if (khuvuc=="THANH KHE")
+                {
+                    list1->readFileByRegion2();
+                }
+                else if (khuvuc=="CAM LE")
+                {
+                   list1->readFileByRegion3();  
+                }
+                else if (khuvuc=="LIEN CHIEU")
+                {
+                   list1->readFileByRegion4();  
+                }
+                else if (khuvuc=="NGU HANH SON")
+                {
+                   list1->readFileByRegion5();  
+                }
+                else if (khuvuc=="SON TRA")
+                {
+                   list1->readFileByRegion6();  
+                }
+                else if (khuvuc=="HOA VANG")
+                {
+                   list1->readFileByRegion7();  
+                }
+                else if (khuvuc=="HOANG SA")
+                {
+                   list1->readFileByRegion8();  
+                }
+                list1->update(canCuoc,khuvuc,hoTen,cancuoc,bienSoXe,mauXe);
+                list->writeFileKhuVuc(khuvuc);
                 break;
             }
         }
     }while(sel != 0);   
     return 0;
 }
-

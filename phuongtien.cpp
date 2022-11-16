@@ -153,7 +153,6 @@ void phuongTien::checkCanCuocCongDan(string &canCuocCongDan) {
                 cout << "Nhap sai so can cuoc cong dan. Vui long nhap lai!" << endl;
                 goto a;
             }
-            
 }
 void phuongTien::checkHangSanXuat(string &hangSanXuat) {
     a:
