@@ -31,8 +31,9 @@ class LinkedList {
     int searchNode();
     void writeFile();
     void writeFileKhuVuc( string khuvuc);
-    void update(string canCuocCongDan,string &khuvuc,string &hoTen,string &canCuoc,string &bienSoXe,string &mauXe);
-    void updateKhuVuc(string canCuocCongDan,string khuvuc,string hoTen,string canCuoc,string bienSoXe,string mauXe);
+    int update(string canCuocCongDan,string &khuvuc,string &hoTen,string &canCuoc,string &bienSoXe,string &mauXe);
+    void updateKhuVuc(string canCuocCongDan,string hoTen,string canCuoc,string bienSoXe,string mauXe);
     void docFile(int n , int sel);
+    void sortNode();
 };
 #endif
