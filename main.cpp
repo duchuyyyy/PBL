@@ -1,9 +1,10 @@
 #include<iostream>
 #include<string>
 #include<windows.h>
-#include "phuongtien.cpp"
+#include "oto.cpp"
 #include"Node.cpp"
 #include "Linkedlist.cpp"
+#include "xemay.cpp"
 using namespace std;
 void title()//Tieu de
 {
@@ -35,6 +36,8 @@ void menu(){
     printf("\t\t|   6. Tim kiem phuong tien trong thanh pho                                         |\n");
     printf("\t\t|   7. Xoa phuong tien trong thanh pho                                              |\n");
     printf("\t\t|   8. Cap nhat phuong tien trong thanh pho                                         |\n");
+    printf("\t\t|   9. In ra cac o to trong thanh pho                                               |\n");
+    printf("\t\t|   10. In ra tat ca xe may trong thanh pho                                         |\n");
     printf("\t\t|   0. Thoat chuong trinh                                                           |\n");
     printf("\t\t-------------------------------------------------------------------------------------\n");
 }
@@ -112,6 +115,17 @@ void thongKeSoLuong() {
     cout << "|" << "\t" << "Toan thanh pho:" << "\t\t" << slpt <<    "\t\t\t\t"  <<   "|" << endl;
     cout << "|_______________________________________________________________|" << endl;
 }
+void luaChonNhapPhuongTien() {
+    printf("\t\t----------------------------------------------------------------\n");
+    printf("\t\t|          LUA CHON LOAI PHUONG TIEN CAN NHAP                   |\n");
+    printf("\t\t|                                                               |\n");
+    printf("\t\t|               1. XE MAY                                       |\n");
+    printf("\t\t|               2. O TO                                         |\n");
+    printf("\t\t|                                                               |\n");
+    printf("\t\t|               0. THOAT                                        |\n");
+    printf("\t\t|                                                               |\n");
+    printf("\t\t----------------------------------------------------------------\n");
+}
 int main() {
     title();
     int sel;
@@ -123,31 +137,87 @@ int main() {
         switch(sel){
             case 1:
             {
-                phuongTien pt;
-                pt.nhapPhuongTienVaoFile();
+                int sel;
+                do {
+                    luaChonNhapPhuongTien();
+                    cout << "Nhap lua chon: " << endl;
+                    cin >> sel;
+                    switch (sel)
+                    {
+                    case 1:
+                    {
+                        xeMay xm;
+                        xm.nhapThongTinVaoFile();
+                        break;
+                    }
+                    case 2:
+                    {
+                        oTo ot;
+                        ot.nhapPhuongTienVaoFile();
+                    }
+                    
+                    default:
+                        break;
+                    }
+                } while(sel != 0);
                 break;
             }
             case 2:
             {
-                int soLuongPhuongTien;
-	            ifstream filecount;
-                filecount.open("soluongphuongtien.txt", ios_base::in);
-                filecount >> soLuongPhuongTien;
-                filecount.close();
-                ifstream filein;
-	            filein.open("thongtinxe.txt", ios_base::out);
-                phuongTien pt[200];
-                int d, m, y;
-                cout << "Nhap ngay kiem dinh: " << endl;
-                pt[1].input(d, m, y);
-                for(int i = 0; i < soLuongPhuongTien; ++i){
-    	             pt[i].docFile(filein);
-                     pt[i].thongTinXe();
-                     pt[i].kiemTraKiemDinh(d,m,y);
-                     cout << "\n";
-	             }
-                 filein.close();
-                 break;
+                int sel;
+                do {
+                    luaChonNhapPhuongTien();
+                    cout << "Nhap lua chon: " << endl;
+                    cin >> sel;
+                    switch (sel)
+                    {
+                    case 1:
+                    {
+                        int soLuongPhuongTien;
+	                    ifstream filecount;
+                        filecount.open("soluongxemay.txt", ios_base::in);
+                        filecount >> soLuongPhuongTien;
+                        filecount.close();
+                        ifstream filein;
+	                    filein.open("xemay.txt", ios_base::out);
+                        xeMay pt[200];
+                        int d, m, y;
+                        cout << "Nhap ngay kiem dinh: " << endl;
+                        pt[1].input(d, m, y);
+                        for(int i = 0; i < soLuongPhuongTien; ++i){
+    	                    pt[i].docFile(filein);
+                            pt[i].thongTinXe();
+                            pt[i].kiemTraKiemDinh(d,m,y);
+                            cout << "\n";
+                        }
+                        filein.close();
+                        break;
+                    }
+                    case 2:
+                    {
+                        int soLuongPhuongTien;
+	                    ifstream filecount;
+                        filecount.open("soluongoto.txt", ios_base::in);
+                        filecount >> soLuongPhuongTien;
+                        filecount.close();
+                        ifstream filein;
+	                    filein.open("oto.txt", ios_base::out);
+                        oTo pt[200];
+                        int d, m, y;
+                        cout << "Nhap ngay kiem dinh: " << endl;
+                        pt[1].input(d, m, y);
+                        for(int i = 0; i < soLuongPhuongTien; ++i){
+    	                pt[i].docFile(filein);
+                        pt[i].thongTinXe();
+                         pt[i].kiemTraKiemDinh(d,m,y);
+                        cout << "\n";
+	                }
+                        filein.close();
+                        break;
+                    }
+                    }
+                }while(sel != 0);
+                break;
             }
             case 3:
             {
@@ -249,7 +319,7 @@ int main() {
                 string cancuoc;
                 list->readFile();
                 cin.ignore();
-                cout << "Phuong tien muon xoa cua chu xe co so cccd la : ";
+                cout << "Phuong tien muon xoa cua chu xe co so cccd la: " << endl;
                 getline(cin, cancuoc);
                 list->deleteNode(cancuoc,khuvuc);
                 list->writeFile();
@@ -303,7 +373,6 @@ int main() {
 	            getline(cin,canCuoc);
                 list->update(canCuoc,khuvuc,hoTen,cancuoc,bienSoXe,mauXe);
                 list->writeFile();
-                upperCase(khuvuc);
                 LinkedList *list1 = new LinkedList();
                 if (khuvuc=="HAI CHAU")
                 {
@@ -337,8 +406,22 @@ int main() {
                 {
                    list1->readFileByRegion8();  
                 }
-                list1->update(canCuoc,khuvuc,hoTen,cancuoc,bienSoXe,mauXe);
+                list1->updateKhuVuc(canCuoc,hoTen,cancuoc,bienSoXe,mauXe);
                 list->writeFileKhuVuc(khuvuc);
+                break;
+            }
+            case 9:
+            {
+                LinkedList *list = new LinkedList();
+                list->readFileOTo();
+                list->printList();
+                break;
+            }
+            case 10:
+            {
+                LinkedList *list = new LinkedList();
+                list->readFileXeMay();
+                list->printList();
                 break;
             }
         }
