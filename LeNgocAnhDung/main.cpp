@@ -333,7 +333,7 @@ int main() {
                 {
                    list1->readFileByRegion8();  
                 }
-                list1->update(canCuoc,khuvuc,hoTen,cancuoc,bienSoXe,mauXe);
+                list1->updateKhuVuc(canCuoc,hoTen,cancuoc,bienSoXe,mauXe);
                 list->writeFileKhuVuc(khuvuc);
             }
         }
