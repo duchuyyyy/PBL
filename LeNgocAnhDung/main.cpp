@@ -294,12 +294,19 @@ int main() {
                 LinkedList *list = new LinkedList();
                 string canCuoc;
                 string khuvuc,hoTen,cancuoc,bienSoXe,mauXe;
-                list->readFile();
                 cin.ignore();
+                list->readFile();
+                a:
                 cout<<"Chu xe can cap nhat co so can cuoc la :";
 	            getline(cin,canCuoc);
-                list->update(canCuoc,khuvuc,hoTen,cancuoc,bienSoXe,mauXe);
+                int temp;
+                temp=list->update(canCuoc,khuvuc,hoTen,cancuoc,bienSoXe,mauXe);
+                if(temp==0)
+                {
+                    goto a;
+                }
                 list->writeFile();
+                upperCase(khuvuc);
                 LinkedList *list1 = new LinkedList();
                 if (khuvuc=="HAI CHAU")
                 {
@@ -338,6 +345,6 @@ int main() {
             }
         }
     }while(sel != 0);   
-    return 0;
+    return 0; 
 }
 
