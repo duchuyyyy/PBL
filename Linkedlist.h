@@ -22,10 +22,12 @@ class LinkedList {
     void readFileByRegion6();
     void readFileByRegion7();
     void readFileByRegion8();
+    void readFileXeMay();
+    void readFileOTo();
     int getSize();
     void printList();
     void insertNode(Node* node, int pos);
-    void pushBack(phuongTien pt);
+    void pushBackOTo(oTo pt);
     void deleteNode(string canCuocCongDan,string &khuvuc);
     void deleteNodeKhuVuc(string canCuocCongDan);
     int searchNode();
@@ -33,6 +35,6 @@ class LinkedList {
     void docFile(int n, int sel);
     void writeFileKhuVuc(string khuvuc);
     void update(string canCuocCongDan,string &khuvuc,string &hoTen,string &canCuoc,string &bienSoXe,string &mauXe);
-    void updateKhuVuc(string canCuocCongDan,string khuvuc,string hoTen,string canCuoc,string bienSoXe,string mauXe);
+    void updateKhuVuc(string canCuocCongDan,string hoTen,string canCuoc,string bienSoXe,string mauXe);
 };
 #endif

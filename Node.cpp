@@ -1,7 +1,7 @@
 #include "Node.h"
 #include<iostream>
 using namespace std;
-Node::Node(phuongTien pt){
+Node::Node(oTo pt){
     this->pt = pt;
     this->next = NULL;
 }

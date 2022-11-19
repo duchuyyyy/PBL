@@ -1,14 +1,13 @@
 #ifndef Node_h
 #define Node_h
 #include<iostream>
-#include "phuongtien.h"
-
+#include "oto.h"
 class Node {
 public:
-    phuongTien pt;
+    oTo pt;
     Node* next = NULL;
 public:
-    Node(phuongTien pt);
+    Node(oTo pt);
     ~Node();
     string getCanCuocCongDan();
     void printData();

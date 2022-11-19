@@ -62,6 +62,14 @@ void LinkedList::docFile(int n, int sel)
 	{
 	    filein.open("HOANG SA.txt", ios_base::in);
 	}
+	else if(sel == 9)
+	{
+		filein.open("xemay.txt", ios_base::in);
+	}
+	else if(sel == 10)
+	{
+		filein.open("oto.txt", ios_base::in);
+	}
 	else if (sel==0)
 	{
 		filein.open("thongtinxe.txt",ios_base::in);
@@ -104,8 +112,8 @@ void LinkedList::docFile(int n, int sel)
     getline(filein, temp15, ':');
     getline(filein, temp16, ' ');
     getline(filein, noiDangKyXe, '.');
-	phuongTien* new_pt = new phuongTien(tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe, tenXe, bienSoXe, ngayDangKyXe, thangDangKyXe, namDangKyXe, noiDangKyXe);
-	this->pushBack(*new_pt);
+	oTo* new_pt = new oTo(tenChuXe, canCuocCongDan, hangSanXuat, loaiXe, mauXe, tenXe, bienSoXe, ngayDangKyXe, thangDangKyXe, namDangKyXe, noiDangKyXe);
+	this->pushBackOTo(*new_pt);
 	  }
     }
 }
@@ -182,6 +190,22 @@ void LinkedList::readFileByRegion8(){
 	filecount.close();
 	docFile(slpt,8);
 }
+void LinkedList::readFileXeMay() {
+	ifstream filecount;
+	filecount.open("soluongxemay.txt", ios_base::in);
+	int slpt;
+	filecount >> slpt;
+	filecount.close();
+	docFile(slpt,9);
+}
+void LinkedList::readFileOTo() {
+	ifstream filecount;
+	filecount.open("soluongoto.txt", ios_base::in);
+	int slpt;
+	filecount >> slpt;
+	filecount.close();
+	docFile(slpt,10);
+}
 int LinkedList::getSize() {
 	return this->size;
 }
@@ -217,7 +241,7 @@ void LinkedList::insertNode(Node* node, int position) {
 	preNode->next = node;
 	this->size++;
 }
-void LinkedList::pushBack(phuongTien pt){
+void LinkedList::pushBackOTo(oTo pt){
 	Node* newNode = new Node(pt); 
       if(pHead == NULL) {
         pHead = newNode;
@@ -608,15 +632,15 @@ void LinkedList::update(string canCuocCongDan,string &khuvuc,string &hoTen,strin
 			    cout << "_____________________________________________________________" << endl;
                 cout << "|                   CAP NHAT THONG TIN                      |" << endl;
                 cout << "|___________________________________________________________|" << endl;
-                cout << "|" << "\t" << "1.Cap nhat thong tin chu xe                  |"  <<endl;
-                cout << "|" << "\t" << "2.Cap nhat bien so                           |" <<endl;
-                cout << "|" << "\t" << "3.Cap nhat mau son xe                        |" <<endl;
-				cout << "|" << "\t" << "0. Thoat                                     |" <<endl;
+                cout << "|" << "\t" << "1.Cap nhat thong tin chu xe "     << "\t\t      |"  <<endl;
+                cout << "|" << "\t" << "2.Cap nhat bien so          "     << "\t\t      |" <<endl;
+                cout << "|" << "\t" << "3.Cap nhat mau son xe       "     << "\t\t      |" <<endl;
+				cout << "|" << "\t" << "0. Thoat                    "     << "\t\t      |" <<endl;
 			    cout << "|___________________________________________________________|" << endl;
 				
 				cout << "Nhap lua chon: " << endl;
-			cin>>sel;
-		    switch (sel)
+			    cin>>sel;
+		        switch (sel)
 			{
 			case 1:
 			{
@@ -650,10 +674,8 @@ void LinkedList::update(string canCuocCongDan,string &khuvuc,string &hoTen,strin
 				currentNode->pt.setMauXemoi(mauXemoi);
 				break;
 			}
-			case 0:
-				break;
 			}
-			} while (sel);
+			} while (sel != 0);
 			hoTen = currentNode->pt.getTenChuXe();
             canCuoc = currentNode->pt.getCanCuocCongDan();
 			bienSoXe = currentNode->pt.getBienSoXe();
@@ -661,21 +683,17 @@ void LinkedList::update(string canCuocCongDan,string &khuvuc,string &hoTen,strin
 		}
     }
 }
-void LinkedList::updateKhuVuc(string canCuocCongDan,string khuvuc,string hoTen,string canCuoc,string bienSoXe,string mauXe)
+void LinkedList::updateKhuVuc(string canCuocCongDan,string hoTen,string canCuoc,string bienSoXe,string mauXe)
 {
-	Node* currentNode = this->pHead;
-    
-		Node *preNode=NULL;
-		while (currentNode != NULL)
-		{
+		Node* currentNode = this->pHead;
+        Node* preNode =NULL;
+		
            if (checkStr(currentNode->pt.getCanCuocCongDan(),canCuocCongDan)==1)
 		   {
-			break;
-		   }
-		   preNode=currentNode;
-		   currentNode=currentNode->next;
-		}
-			currentNode->pt.setTenchuxemoi(hoTen,canCuoc);
-			currentNode->pt.setBienSomoi(bienSoXe);
-			currentNode->pt.setMauXemoi(mauXe);
+				preNode=currentNode;
+		        currentNode=currentNode->next;
+	            currentNode->pt.setTenchuxemoi(hoTen,canCuoc);
+				currentNode->pt.setBienSomoi(bienSoXe);
+				currentNode->pt.setMauXemoi(mauXe);
+		   }			
 }
