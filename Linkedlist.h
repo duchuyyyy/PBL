@@ -34,7 +34,7 @@ class LinkedList {
     void sortList();
     void docFile(int n, int sel);
     void writeFileKhuVuc(string khuvuc);
-    void update(string canCuocCongDan,string &khuvuc,string &hoTen,string &canCuoc,string &bienSoXe,string &mauXe);
+    int update(string canCuocCongDan,string &khuvuc,string &hoTen,string &canCuoc,string &bienSoXe,string &mauXe);
     void updateKhuVuc(string canCuocCongDan,string hoTen,string canCuoc,string bienSoXe,string mauXe);
 };
 #endif

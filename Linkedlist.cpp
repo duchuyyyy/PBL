@@ -17,7 +17,7 @@ LinkedList::~LinkedList() {
 		delete currentNode;
 	}
 }
-void checkCanCuoc(string canCuocCongDan)
+void checkCanCuoc(string& canCuocCongDan)
 {
 	a: 
         //cin.ignore();
@@ -483,6 +483,7 @@ void LinkedList::printList() {
 	}
 }
 int LinkedList::searchNode() {
+	int flag = 0;
 	string canCuocCongDan;
 a:
 	cout << "Nhap so can cuoc cong dan can tim kiem: "  << endl;
@@ -498,14 +499,18 @@ a:
 			cout << "Da tim thay phuong tien can tim: " << endl;
 			cout << endl;
 			currentNode->printData();
-			return 1;
+			flag = 1;
 		}
 		
 		currentNode = currentNode->next;
 	  }
 	}
-	cout << "Khong ton tai phuong tien can tim!" << endl;
-	return 0;
+	if(flag == 1) {
+		return 1;
+	} else {
+		cout << "Khong ton tai phuong tien can tim!" << endl;
+		return 0;
+	}
 }
 void swap(Node** pt1, Node** pt2) {
 	Node* temp;
@@ -600,100 +605,125 @@ void LinkedList::writeFileKhuVuc(string khuvuc) {
 	}
     fileout.close();
 }
-void LinkedList::update(string canCuocCongDan,string &khuvuc,string &hoTen,string &canCuoc,string &bienSoXe,string &mauXe)
+int LinkedList::update(string canCuocCongDan, string &khuvuc, string &hoTen, string &canCuoc, string &bienSoXe, string &mauXe)
 {
-	Node* currentNode = this->pHead;
-    if (currentNode == NULL)
+	int temp=1;
+	Node *currentNode = this->pHead;
+	if (currentNode == NULL)
 	{
-		cout<<endl;
+		cout << endl;
 	}
 	else
 	{
-		Node *preNode=NULL;
+		Node *preNode = NULL;
 		while (currentNode != NULL)
 		{
-           if (checkStr(currentNode->pt.getCanCuocCongDan(),canCuocCongDan)==1)
-		   {
-			break;
-		   }
-		   preNode=currentNode;
-		   currentNode=currentNode->next;
+			if (checkStr(currentNode->pt.getCanCuocCongDan(), canCuocCongDan) == 1)
+			{
+				break;
+			}
+			preNode = currentNode;
+			currentNode = currentNode->next;
 		}
-		if (currentNode==NULL)
+		if (currentNode == NULL)
 		{
-			cout<<"\nKhong tim thay phuong tien !!"<<endl;
+			cout << "\nKhong tim thay phuong tien !!" << endl;
+			temp=0;
 		}
 		else
 		{
-			khuvuc=currentNode->pt.getNoiDangKyXe();
+			khuvuc = currentNode->pt.getNoiDangKyXe();
 			int sel;
 			do
 			{
-			    cout << "_____________________________________________________________" << endl;
-                cout << "|                   CAP NHAT THONG TIN                      |" << endl;
-                cout << "|___________________________________________________________|" << endl;
-                cout << "|" << "\t" << "1.Cap nhat thong tin chu xe "     << "\t\t      |"  <<endl;
-                cout << "|" << "\t" << "2.Cap nhat bien so          "     << "\t\t      |" <<endl;
-                cout << "|" << "\t" << "3.Cap nhat mau son xe       "     << "\t\t      |" <<endl;
-				cout << "|" << "\t" << "0. Thoat                    "     << "\t\t      |" <<endl;
-			    cout << "|___________________________________________________________|" << endl;
-				
-				cout << "Nhap lua chon: " << endl;
-			    cin>>sel;
-		        switch (sel)
-			{
-			case 1:
-			{
-			    cout<<"Nhap thong tin chu moi "<<endl;
-				string tenChumoi,canCuocmoi;
-				cin.ignore();
-				cout<<"Ho ten :";
-				getline(cin,tenChumoi);
-				cout<<endl;
-				cout<<"Can cuoc :";
-				getline(cin,canCuocmoi);
-				checkCanCuoc(canCuocmoi);
-				currentNode->pt.setTenchuxemoi(tenChumoi,canCuocmoi);
-				break;
-			}
-			case 2:
-			{
-				cout<<"Nhap bien so moi :";
-				string bienSomoi;
-				cin.ignore();
-				getline(cin,bienSomoi);
-                currentNode->pt.setBienSomoi(bienSomoi);
-				break;
-			}
-			case 3:
-			{
-				cout<<"Nhap mau son xe moi :";
-				string mauXemoi;
-				cin.ignore();
-				getline(cin,mauXemoi);
-				currentNode->pt.setMauXemoi(mauXemoi);
-				break;
-			}
-			}
-			} while (sel != 0);
+				cout << "_____________________________________________________________" << endl;
+				cout << "|                   CAP NHAT THONG TIN                      |" << endl;
+				cout << "|___________________________________________________________|" << endl;
+				cout << "\t"
+					 << "1.Cap nhat thong tin chu xe " << endl;
+				cout << "\t"
+					 << "2.Cap nhat bien so " << endl;
+				cout << "\t"
+					 << "3.Cap nhat mau son xe " << endl;
+				cout << "\t"
+					 << "0. Thoat " << endl;
+				cout << "\t\tNhap lua chon :";
+				cin >> sel;
+				switch (sel)
+				{
+				case 1:
+				{
+					cout << "Nhap thong tin chu moi " << endl;
+					string tenChumoi, canCuocmoi;
+					cin.ignore();
+					cout << "Ho ten :";
+					getline(cin, tenChumoi);
+					cout << endl;
+					cout << "Can cuoc :";
+					checkCanCuoc(canCuocmoi);
+					currentNode->pt.setTenchuxemoi(tenChumoi, canCuocmoi);
+					break;
+				}
+				case 2:
+				{
+					cout << "Nhap bien so moi :";
+					string bienSomoi;
+					cin.ignore();
+					getline(cin, bienSomoi);
+					currentNode->pt.setBienSomoi(bienSomoi);
+					break;
+				}
+				case 3:
+				{
+					cout << "Nhap mau son xe moi :";
+					string mauXemoi;
+					cin.ignore();
+					getline(cin, mauXemoi);
+					currentNode->pt.setMauXemoi(mauXemoi);
+					break;
+				}
+				case 0:
+					break;
+				}
+			} while (sel);
 			hoTen = currentNode->pt.getTenChuXe();
-            canCuoc = currentNode->pt.getCanCuocCongDan();
+			canCuoc = currentNode->pt.getCanCuocCongDan();
 			bienSoXe = currentNode->pt.getBienSoXe();
 			mauXe = currentNode->pt.getMauXe();
 		}
-    }
+	}
+	return temp;
 }
-void LinkedList::updateKhuVuc(string canCuocCongDan,string hoTen,string canCuoc,string bienSoXe,string mauXe)
+void LinkedList::updateKhuVuc(string canCuocCongDan, string hoTen, string canCuoc, string bienSoXe, string mauXe)
 {
-		Node* currentNode = this->pHead;
-        Node* preNode =NULL;
-		
-           if (checkStr(currentNode->pt.getCanCuocCongDan(),canCuocCongDan)==1)
-		   {
-				preNode=currentNode;
-		        currentNode=currentNode->next;
-	            currentNode->pt.setTenchuxemoi(hoTen,canCuoc);
-				currentNode->pt.setBienSomoi(bienSoXe);
-				currentNode->pt.setMauXemoi(mauXe);
-		   }			
+	Node *currentNode = this->pHead;
+    Node *preNode = NULL;
+	if (currentNode == NULL)
+	{
+		cout << endl;
+	}
+	else
+	{
+		Node *preNode = NULL;
+		while (currentNode != NULL)
+		{
+			if (checkStr(currentNode->pt.getCanCuocCongDan(), canCuocCongDan) == 1)
+			{
+				break;
+			}
+			preNode = currentNode;
+			currentNode = currentNode->next;
+		}
+		if (currentNode == NULL)
+		{
+			cout << "" << endl;
+		}
+		else if (checkStr(currentNode->pt.getCanCuocCongDan(), canCuocCongDan) == 1)
+		{
+		currentNode->pt.setTenchuxemoi(hoTen, canCuoc);
+	    currentNode->pt.setBienSomoi(bienSoXe);
+	    currentNode->pt.setMauXemoi(mauXe);
+		}
+	
+}
 }

@@ -9,7 +9,7 @@ class xeMay : public oTo {
         int namDangKyXe, string noiDangKyXe);
         ~xeMay();
         void checkHangSanXuat(string& hangSanXuat);
-        void checkBienSoXe(string& bienSoXe);
+        void setBienSoXe(string& khuVuc, string& bienSoXe);
         void capNhatSoLuongXeMay();
         void nhapThongTin();
         void nhapThongTinVaoFile();

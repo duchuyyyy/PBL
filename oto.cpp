@@ -145,6 +145,15 @@ int oTo::day(int d, int m, int y){
         }
         return d;
 }
+void oTo::checkLoaiXe(string& loaiXe) {
+    a:
+        getline(cin, loaiXe);
+        chuyenDoi(loaiXe);
+        if(loaiXe != "Sedan" && loaiXe != "Suv") {
+            cout << "Nhap lai loai xe!" << endl;
+            goto a;
+        }
+}
 void oTo::checkCanCuocCongDan(string &canCuocCongDan) {
     a: 
             //cin.ignore();
@@ -177,6 +186,31 @@ void oTo::checkNoiDangKyXe(string &noiDangKyXe) {
                 goto a;
             }
 }
+void oTo::setBienSoXe(string& loaiXe, string& bienSoXe) {
+    string bienSo;
+        if(loaiXe == "Sedan") {
+        a:
+            cout << "Nhap 5 chu so:" << endl;
+            bienSoXe = "43A-";
+            cout << "43A-";
+            getline(cin, bienSo);
+            if(bienSo.length() != 5) {
+                goto a;
+            }
+            bienSoXe.append(bienSo);
+        }
+        else if(loaiXe == "Suv") {
+        b:
+            cout << "Nhap 5 chu so:" << endl;
+            bienSoXe = "43B-";
+            cout << "43B-";
+            getline(cin, bienSo);
+            if(bienSo.length() != 5) {
+                goto b;
+            }
+            bienSoXe.append(bienSo);
+        }
+}
 void oTo::kiemTraKiemDinh(int d, int m, int y){
         int kc1 = day(this->ngayDangKyXe, this->thangDangKyXe, this->namDangKyXe);
         int kc2 = day(d, m, y);
@@ -203,7 +237,7 @@ void oTo::nhapThongTin(){
     cout << "Nhap hang xe: " << endl;
     this->checkHangSanXuat(this->hangSanXuat);
     cout << "Nhap loai xe: " << endl;
-    getline(cin, this->loaiXe);
+    this->checkLoaiXe(this->loaiXe);
     cout << "Nhap mau xe: " << endl;
     getline(cin, this->mauXe);
     chuyenDoi(this->mauXe);
@@ -211,7 +245,7 @@ void oTo::nhapThongTin(){
     getline(cin, this->tenXe);
     chuyenDoi(this->tenXe);
     cout << "Nhap bien so xe: " << endl;
-    getline(cin,this->bienSoXe);
+    this->setBienSoXe(this->loaiXe, this->bienSoXe);
     cout << "Nhap noi dang ky xe: " << endl;
     this->checkNoiDangKyXe(this->noiDangKyXe);
     cout << "Nhap ngay, thang, nam dang ky xe: " << endl;
@@ -324,12 +358,12 @@ void oTo::capNhatSoLuongPhuongTienToanKhuVuc(){
     ifstream filein;
 	filein.open("soluongphuongtien.txt", ios_base::in);
 	int count;
-	filein >> count;
-	count++;
+    filein >> count;
+    count++;
 	filein.close();
 	ofstream fileout;
 	fileout.open("soluongphuongtien.txt", ios_base::out);
-	fileout << count;
+    fileout << count;
 	fileout.close();
 }
 void oTo::setColor(int color){

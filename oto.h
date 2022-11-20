@@ -42,9 +42,11 @@ public:
     void input(int& d, int& m, int& y);
     int dmax(int m, int y);
     int day(int d, int m, int y);
-    void checkCanCuocCongDan(string &canCuocCongDan);
-    void checkHangSanXuat(string &hangSanXuat);
-    void checkNoiDangKyXe(string &noiDangKyXe);
+    void checkLoaiXe(string& loaiXe);
+    void checkCanCuocCongDan(string& canCuocCongDan);
+    void checkHangSanXuat(string& hangSanXuat);
+    void checkNoiDangKyXe(string& noiDangKyXe);
+    void setBienSoXe(string& loaiXe, string& bienSoXe);
     void kiemTraKiemDinh(int d, int m, int y);
     void thongTinPhuongTienKhuVuc();
     void docFile(ifstream &filein);

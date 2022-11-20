@@ -71,8 +71,8 @@ int check(string s1, string s2){
 }
 void thongKeSoLuong() {
     ifstream filecountHC, filecountTK, filecountLC, filecountHS;
-    ifstream filecountHV, filecountCL, filecountNHS, filecountST, filecount;
-    int slptHC, slptTK, slptLC, slptHS, slptHV, slptCL, slptNHS, slptST, slpt;
+    ifstream filecountHV, filecountCL, filecountNHS, filecountST, filecount, filecountOT, filecountXM;
+    int slptHC, slptTK, slptLC, slptHS, slptHV, slptCL, slptNHS, slptST, slptOT, slptXM, slpt;
     filecountHC.open("soluongphuongtienHaiChau.txt", ios_base::in);
     filecountHC >> slptHC;
     filecountHC.close();
@@ -100,6 +100,12 @@ void thongKeSoLuong() {
     filecount.open("soluongphuongtien.txt", ios_base::in);
     filecount >> slpt;
     filecount.close();
+    filecountOT.open("soluongoto.txt", ios_base::in);
+    filecountOT >> slptOT;
+    filecountOT.close();
+    filecountXM.open("soluongxemay.txt", ios_base::in);
+    filecountXM >> slptXM;
+    filecountXM.close();
     cout << "_________________________________________________________________" << endl;
     cout << "|         THONG KE SO LUONG PHUONG TIEN THEO KHU VUC            |" << endl;
     cout << "|_______________________________________________________________|" << endl;
@@ -113,6 +119,8 @@ void thongKeSoLuong() {
     cout << "|" << "\t" << "Huyen Hoang Sa:" << "\t\t" << slptHS <<   "\t\t\t\t" << "|" << endl;
     cout << "|_______________________________________________________________|" << endl;
     cout << "|" << "\t" << "Toan thanh pho:" << "\t\t" << slpt <<    "\t\t\t\t"  <<   "|" << endl;
+    cout << "|" << "\t" << "Xe may: " << "\t\t" << slptXM << "\t\t\t\t" << "|" << endl;
+    cout << "|" << "\t" << "O to: " << "\t\t\t" << slptOT << "\t\t\t\t" << "|" << endl;
     cout << "|_______________________________________________________________|" << endl;
 }
 void luaChonNhapPhuongTien() {
@@ -367,12 +375,19 @@ int main() {
                 LinkedList *list = new LinkedList();
                 string canCuoc;
                 string khuvuc,hoTen,cancuoc,bienSoXe,mauXe;
-                list->readFile();
                 cin.ignore();
+                list->readFile();
+                a:
                 cout<<"Chu xe can cap nhat co so can cuoc la :";
 	            getline(cin,canCuoc);
-                list->update(canCuoc,khuvuc,hoTen,cancuoc,bienSoXe,mauXe);
+                int temp;
+                temp=list->update(canCuoc,khuvuc,hoTen,cancuoc,bienSoXe,mauXe);
+                if(temp==0)
+                {
+                    goto a;
+                }
                 list->writeFile();
+                upperCase(khuvuc);
                 LinkedList *list1 = new LinkedList();
                 if (khuvuc=="HAI CHAU")
                 {
@@ -428,3 +443,6 @@ int main() {
     }while(sel != 0);   
     return 0;
 }
+
+
+

@@ -2,6 +2,22 @@
 #include "xemay.h"
 using namespace std;
 
+void uppercase(string &s1){
+	for(int i = 0; i < s1.size(); ++i){
+		s1[i] = toupper(s1[i]);
+	}
+}
+void chuyendoi(string &x){
+	for(int i=0; i<x.length(); i++){
+		if (i==0|| (i>0 && x[i-1]==32)){
+			if(x[i]>=97 && x[i]<=122)
+				x[i]=x[i]-32;	
+		}else{
+			if(x[i]>=65 && x[i]<=90)
+				x[i]=x[i]+32;	
+		}
+	}
+}
 xeMay::xeMay(){}
 xeMay::~xeMay(){}
 xeMay::xeMay(string tenChuXe, string canCuocCongDan, string hangSanXuat, string loaiXe, string mauXe, string tenXe, string bienSoXe, 
@@ -12,7 +28,7 @@ int ngayDangKyXe, int thangDangKyXe, int namDangKyXe, string noiDangKyXe) : oTo(
 void xeMay::checkHangSanXuat(string& hangSanXuat) {
     a:
         getline(cin, hangSanXuat);
-        chuyenDoi(hangSanXuat);
+        chuyendoi(hangSanXuat);
         if(hangSanXuat != "Honda" && hangSanXuat != "Triumph" && hangSanXuat != "Yamaha" && hangSanXuat != "Harley Davidson" && hangSanXuat != "Benelli" &&
         hangSanXuat != "Kawasaki" && hangSanXuat != "Ducati" && hangSanXuat != "Suzuki" && hangSanXuat != "Bmw" && hangSanXuat != "Zongshen" && hangSanXuat != "Sym"
         && hangSanXuat != "Yadea" && hangSanXuat != "Niu" && hangSanXuat != "Piaggio" && hangSanXuat != "Vinfast") {
@@ -20,8 +36,96 @@ void xeMay::checkHangSanXuat(string& hangSanXuat) {
             goto a;
         }
 }
-void xeMay::checkBienSoXe(string& bienSoXe) {
-
+void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
+        string bienSo;
+        if(khuVuc == "Thanh Khe") {
+        a:
+            cout << "Nhap 5 chu so:" << endl;
+            bienSoXe = "43D1-";
+            cout << "43D1-";
+            getline(cin, bienSo);
+            if(bienSo.length() != 5) {
+                goto a;
+            }
+            bienSoXe.append(bienSo);
+        }
+        else if(khuVuc == "Son Tra") {
+        b:
+            cout << "Nhap 5 chu so:" << endl;
+            bienSoXe = "43E1-";
+            cout << "43E1-";
+            getline(cin, bienSo);
+            if(bienSo.length() != 5) {
+                goto b;
+            }
+            bienSoXe.append(bienSo);
+        }
+        else if(khuVuc == "Lien Chieu") {
+        c:
+            cout << "Nhap 5 chu so:" << endl;
+            bienSoXe = "43F1-";
+            cout << "43F1-";
+            getline(cin, bienSo);
+            if(bienSo.length() != 5) {
+                goto c;
+            }
+            bienSoXe.append(bienSo);
+        }
+        else if(khuVuc == "Cam Le") {
+        d:
+            cout << "Nhap 5 chu so:" << endl;
+            bienSoXe = "43G1-";
+            cout << "43G1-";
+            getline(cin, bienSo);
+            if(bienSo.length() != 5) {
+                goto d;
+            }
+            bienSoXe.append(bienSo);
+        }
+        else if(khuVuc == "Ngu Hanh Son") {
+        e:
+            cout << "Nhap 5 chu so:" << endl;
+            bienSoXe = "43H1-";
+            cout << "43H1-";
+            getline(cin, bienSo);
+            if(bienSo.length() != 5) {
+                goto e;
+            }
+            bienSoXe.append(bienSo);
+        }
+        else if(khuVuc == "Hoa Vang") {
+        n:
+            cout << "Nhap 5 chu so:" << endl;
+            bienSoXe = "43K1-";
+            cout << "43K1-";
+            getline(cin, bienSo);
+            if(bienSo.length() != 5) {
+                goto n;
+            }
+            bienSoXe.append(bienSo);
+        }
+        else if(khuVuc == "Hoang Sa") {
+        m:
+            cout << "Nhap 5 chu so:" << endl;
+            bienSoXe = "43L1-";
+            cout << "43L1-";
+            getline(cin, bienSo);
+            if(bienSo.length() != 5) {
+                goto m;
+            }
+            bienSoXe.append(bienSo);
+        }
+        else if(khuVuc == "Hai Chau") {
+        z:
+            cout << "Nhap 5 chu so:" << endl;
+            bienSoXe = "43C1-";
+            cout << "43C1-";
+            getline(cin, bienSo);
+            if(bienSo.length() != 5) {
+                goto z;
+            }
+            bienSoXe.append(bienSo);
+        }
 }
 void xeMay::nhapThongTin() {
    cin.ignore();
@@ -29,7 +133,7 @@ void xeMay::nhapThongTin() {
    cout << endl;
    cout << "Nhap ho ten chu xe: " << endl;
    getline(cin,this->tenChuXe);
-   chuyenDoi(this->tenChuXe);
+   chuyendoi(this->tenChuXe);
    cout << "Nhap can cuoc cong dan: " << endl;
    this->checkCanCuocCongDan(this->canCuocCongDan);
    cout << "Nhap hang xe: " << endl;
@@ -38,14 +142,14 @@ void xeMay::nhapThongTin() {
    getline(cin, this->loaiXe);
    cout << "Nhap mau xe: " << endl;
    getline(cin, this->mauXe);
-   chuyenDoi(this->mauXe);
+   chuyendoi(this->mauXe);
    cout << "Nhap ten xe: " << endl;
    getline(cin, this->tenXe);
-   chuyenDoi(this->tenXe);
-   cout << "Nhap bien so xe: " << endl;
-   getline(cin,this->bienSoXe);
+   chuyendoi(this->tenXe);
    cout << "Nhap noi dang ky xe: " << endl;
    this->checkNoiDangKyXe(this->noiDangKyXe);
+   cout << "Nhap bien so xe: " << endl;
+   setBienSoXe(this->noiDangKyXe, this->bienSoXe);
    cout << "Nhap ngay, thang, nam dang ky xe: " << endl;
    this->input(this->ngayDangKyXe, this->thangDangKyXe, this->namDangKyXe);
 }
@@ -67,7 +171,7 @@ void xeMay::nhapThongTinVaoFile() {
     this->capNhatSoLuongPhuongTienToanKhuVuc();
     string filename, khuvuc;
     khuvuc = this->noiDangKyXe;
-    upperCase(khuvuc);
+    uppercase(khuvuc);
     this->capNhatSoLuongPhuongTienKhuVuc(khuvuc);
     string temp = ".txt";
     filename = khuvuc.append(temp);
