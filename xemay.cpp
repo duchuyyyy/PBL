@@ -36,6 +36,14 @@ void xeMay::checkHangSanXuat(string& hangSanXuat) {
             goto a;
         }
 }
+int checkkytu(string& s) {
+    for(int i = 0; i < s.length(); ++i){
+    	if(isalpha(s[i])) {
+    		return 0;
+		}
+	}
+    return 1;
+}
 void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
         string bienSo;
         if(khuVuc == "Thanh Khe") {
@@ -44,7 +52,13 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
             bienSoXe = "43D1-";
             cout << "43D1-";
             getline(cin, bienSo);
+            int check = checkkytu(bienSo);
+            if(!check) {
+                cout << "Bien so xe phai la chu so. Vui long nhap lai!" << endl;
+                goto a;
+            }
             if(bienSo.length() != 5) {
+                cout << "Vui long nhap dung 5 chu so!" << endl;
                 goto a;
             }
             bienSoXe.append(bienSo);
@@ -55,7 +69,13 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
             bienSoXe = "43E1-";
             cout << "43E1-";
             getline(cin, bienSo);
+            int check = checkkytu(bienSo);
+            if(!check) {
+                cout << "Bien so xe phai la chu so. Vui long nhap lai!" << endl;
+                goto b;
+            }
             if(bienSo.length() != 5) {
+                cout << "Vui long nhap dung 5 chu so!" << endl;
                 goto b;
             }
             bienSoXe.append(bienSo);
@@ -66,7 +86,13 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
             bienSoXe = "43F1-";
             cout << "43F1-";
             getline(cin, bienSo);
+            int check = checkkytu(bienSo);
+            if(!check) {
+                cout << "Bien so xe phai la chu so. Vui long nhap lai!" << endl;
+                goto c;
+            }
             if(bienSo.length() != 5) {
+                cout << "Vui long nhap dung 5 chu so!" << endl;
                 goto c;
             }
             bienSoXe.append(bienSo);
@@ -77,7 +103,13 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
             bienSoXe = "43G1-";
             cout << "43G1-";
             getline(cin, bienSo);
+            int check = checkkytu(bienSo);
+            if(!check) {
+                cout << "Bien so xe phai la chu so. Vui long nhap lai!" << endl;
+                goto d;
+            }
             if(bienSo.length() != 5) {
+                cout << "Vui long nhap dung 5 chu so!" << endl;
                 goto d;
             }
             bienSoXe.append(bienSo);
@@ -88,7 +120,13 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
             bienSoXe = "43H1-";
             cout << "43H1-";
             getline(cin, bienSo);
+            int check = checkkytu(bienSo);
+            if(!check) {
+                cout << "Bien so xe phai la chu so. Vui long nhap lai!" << endl;
+                goto e;
+            }
             if(bienSo.length() != 5) {
+                cout << "Vui long nhap dung 5 chu so!" << endl;
                 goto e;
             }
             bienSoXe.append(bienSo);
@@ -99,7 +137,13 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
             bienSoXe = "43K1-";
             cout << "43K1-";
             getline(cin, bienSo);
+            int check = checkkytu(bienSo);
+            if(!check) {
+                cout << "Bien so xe phai la chu so. Vui long nhap lai!" << endl;
+                goto n;
+            }
             if(bienSo.length() != 5) {
+                cout << "Vui long nhap dung 5 chu so!" << endl;
                 goto n;
             }
             bienSoXe.append(bienSo);
@@ -110,7 +154,13 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
             bienSoXe = "43L1-";
             cout << "43L1-";
             getline(cin, bienSo);
+            int check = checkkytu(bienSo);
+            if(!check) {
+                cout << "Bien so xe phai la chu so. Vui long nhap lai!" << endl;
+                goto m;
+            }
             if(bienSo.length() != 5) {
+                cout << "Vui long nhap dung 5 chu so!" << endl;
                 goto m;
             }
             bienSoXe.append(bienSo);
@@ -121,7 +171,13 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
             bienSoXe = "43C1-";
             cout << "43C1-";
             getline(cin, bienSo);
+            int check = checkkytu(bienSo);
+            if(!check) {
+                cout << "Bien so xe phai la chu so. Vui long nhap lai!" << endl;
+                goto z;
+            }
             if(bienSo.length() != 5) {
+                cout << "Vui long nhap dung 5 chu so!" << endl;
                 goto z;
             }
             bienSoXe.append(bienSo);

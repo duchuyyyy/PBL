@@ -154,10 +154,23 @@ void oTo::checkLoaiXe(string& loaiXe) {
             goto a;
         }
 }
+int checkKyTu(string& s) {
+    for(int i = 0; i < s.length(); ++i){
+    	if(isalpha(s[i])) {
+    		return 0;
+		}
+	}
+    return 1;
+}
 void oTo::checkCanCuocCongDan(string &canCuocCongDan) {
     a: 
             //cin.ignore();
             getline(cin, canCuocCongDan);
+            int check = checkKyTu(canCuocCongDan);
+            if(!check) {
+                cout << "Can cuoc cong dan phai la chu so. Vui long nhap lai!" << endl;
+                goto a;
+            }
             if(canCuocCongDan.length() != 12) {
                 cout << "Nhap sai so can cuoc cong dan. Vui long nhap lai!" << endl;
                 goto a;
@@ -194,7 +207,13 @@ void oTo::setBienSoXe(string& loaiXe, string& bienSoXe) {
             bienSoXe = "43A-";
             cout << "43A-";
             getline(cin, bienSo);
+            int check = checkKyTu(bienSo);
+            if(!check) {
+                cout << "Bien so xe phai la chu so. Vui long nhap lai!" << endl;
+                goto a;
+            }
             if(bienSo.length() != 5) {
+                cout << "Vui long nhap dung 5 chu so!" << endl;
                 goto a;
             }
             bienSoXe.append(bienSo);
@@ -205,7 +224,13 @@ void oTo::setBienSoXe(string& loaiXe, string& bienSoXe) {
             bienSoXe = "43B-";
             cout << "43B-";
             getline(cin, bienSo);
+            int check = checkKyTu(bienSo);
+            if(!check) {
+                cout << "Bien so xe phai la chu so. Vui long nhap lai!" << endl;
+                goto b;
+            }
             if(bienSo.length() != 5) {
+                cout << "Vui long nhap dung 5 chu so!" << endl;
                 goto b;
             }
             bienSoXe.append(bienSo);
