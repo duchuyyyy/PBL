@@ -46,6 +46,8 @@ public:
     void checkCanCuocCongDan(string& canCuocCongDan);
     void checkHangSanXuat(string& hangSanXuat);
     void checkNoiDangKyXe(string& noiDangKyXe);
+    int checkBienSoXe(string& bienSoXe);
+    void ghiBienSoXe(string& bienSoXe);
     void setBienSoXe(string& loaiXe, string& bienSoXe);
     void kiemTraKiemDinh(int d, int m, int y);
     void thongTinPhuongTienKhuVuc();

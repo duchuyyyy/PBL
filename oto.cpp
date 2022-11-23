@@ -217,6 +217,12 @@ void oTo::setBienSoXe(string& loaiXe, string& bienSoXe) {
                 goto a;
             }
             bienSoXe.append(bienSo);
+            int k;
+            k = checkBienSoXe(bienSoXe);
+            if(!k) {
+                 cout << "Bien so xe bi trung! Nhap lai." << endl;
+                 goto a;
+            }
         }
         else if(loaiXe == "Suv") {
         b:
@@ -234,7 +240,33 @@ void oTo::setBienSoXe(string& loaiXe, string& bienSoXe) {
                 goto b;
             }
             bienSoXe.append(bienSo);
+            int k;
+            k = checkBienSoXe(bienSoXe);
+            if(!k) {
+                 cout << "Bien so xe bi trung! Nhap lai." << endl;
+                 goto b;
+            }
         }
+}
+int oTo::checkBienSoXe(string& bienSoXe) {
+    string temp;
+    int flag = 1;
+    ifstream filein;
+    filein.open("biensoxe.txt", ios_base::in);
+    while(!filein.eof()) {
+        filein >> temp;
+        if(bienSoXe == temp) {
+            flag = 0;
+            break;
+        }
+    }
+    return flag;
+}
+void oTo::ghiBienSoXe(string& bienSoXe) {
+    ofstream fileout;
+    fileout.open("biensoxe.txt", ios_base::app);
+    fileout << bienSoXe << endl;
+    fileout.close();
 }
 void oTo::kiemTraKiemDinh(int d, int m, int y){
         int kc1 = day(this->ngayDangKyXe, this->thangDangKyXe, this->namDangKyXe);
@@ -271,6 +303,7 @@ void oTo::nhapThongTin(){
     chuyenDoi(this->tenXe);
     cout << "Nhap bien so xe: " << endl;
     this->setBienSoXe(this->loaiXe, this->bienSoXe);
+    this->ghiBienSoXe(this->bienSoXe);
     cout << "Nhap noi dang ky xe: " << endl;
     this->checkNoiDangKyXe(this->noiDangKyXe);
     cout << "Nhap ngay, thang, nam dang ky xe: " << endl;

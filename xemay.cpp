@@ -62,6 +62,12 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
                 goto a;
             }
             bienSoXe.append(bienSo);
+            int k;
+            k = checkBienSoXe(bienSoXe);
+            if(!k) {
+                 cout << "Bien so xe bi trung! Nhap lai." << endl;
+                 goto a;
+            }
         }
         else if(khuVuc == "Son Tra") {
         b:
@@ -79,6 +85,12 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
                 goto b;
             }
             bienSoXe.append(bienSo);
+            int k;
+            k = checkBienSoXe(bienSoXe);
+            if(!k) {
+                 cout << "Bien so xe bi trung! Nhap lai." << endl;
+                 goto b;
+            }
         }
         else if(khuVuc == "Lien Chieu") {
         c:
@@ -96,6 +108,12 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
                 goto c;
             }
             bienSoXe.append(bienSo);
+            int k;
+            k = checkBienSoXe(bienSoXe);
+            if(!k) {
+                 cout << "Bien so xe bi trung! Nhap lai." << endl;
+                 goto c;
+            }
         }
         else if(khuVuc == "Cam Le") {
         d:
@@ -113,6 +131,12 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
                 goto d;
             }
             bienSoXe.append(bienSo);
+            int k;
+            k = checkBienSoXe(bienSoXe);
+            if(!k) {
+                 cout << "Bien so xe bi trung! Nhap lai." << endl;
+                 goto d;
+            }
         }
         else if(khuVuc == "Ngu Hanh Son") {
         e:
@@ -130,6 +154,12 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
                 goto e;
             }
             bienSoXe.append(bienSo);
+            int k;
+            k = checkBienSoXe(bienSoXe);
+            if(!k) {
+                 cout << "Bien so xe bi trung! Nhap lai." << endl;
+                 goto e;
+            }
         }
         else if(khuVuc == "Hoa Vang") {
         n:
@@ -147,6 +177,12 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
                 goto n;
             }
             bienSoXe.append(bienSo);
+            int k;
+            k = checkBienSoXe(bienSoXe);
+            if(!k) {
+                 cout << "Bien so xe bi trung! Nhap lai." << endl;
+                 goto n;
+            }
         }
         else if(khuVuc == "Hoang Sa") {
         m:
@@ -164,6 +200,12 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
                 goto m;
             }
             bienSoXe.append(bienSo);
+            int k;
+            k = checkBienSoXe(bienSoXe);
+            if(!k) {
+                 cout << "Bien so xe bi trung! Nhap lai." << endl;
+                 goto m;
+            }
         }
         else if(khuVuc == "Hai Chau") {
         z:
@@ -181,6 +223,12 @@ void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
                 goto z;
             }
             bienSoXe.append(bienSo);
+            int k;
+            k = checkBienSoXe(bienSoXe);
+            if(!k) {
+                 cout << "Bien so xe bi trung! Nhap lai." << endl;
+                 goto z;
+            }
         }
 }
 void xeMay::nhapThongTin() {
@@ -205,7 +253,8 @@ void xeMay::nhapThongTin() {
    cout << "Nhap noi dang ky xe: " << endl;
    this->checkNoiDangKyXe(this->noiDangKyXe);
    cout << "Nhap bien so xe: " << endl;
-   setBienSoXe(this->noiDangKyXe, this->bienSoXe);
+   this->setBienSoXe(this->noiDangKyXe, this->bienSoXe);
+   this->ghiBienSoXe(this->bienSoXe);
    cout << "Nhap ngay, thang, nam dang ky xe: " << endl;
    this->input(this->ngayDangKyXe, this->thangDangKyXe, this->namDangKyXe);
 }
