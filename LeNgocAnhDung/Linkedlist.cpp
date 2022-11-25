@@ -378,15 +378,23 @@ int LinkedList::deleteNode(string bienSoXe, string &khuvuc,int sel)
                 fileout1 << count1;
                 fileout1.close();
 			}
-			else if(sel==0)
-			{
-				cout<<endl;
-			}
 		}
 
 	}
 	return flag;
 
+}
+void LinkedList::deleteBienSo(string bienSoXe)
+{ 
+    ifstream filein;
+    filein.open("soluongphuongtien.txt", ios_base::in);
+    int count;
+    filein >> count;
+	for (int i = 1; i <= count; i++)
+	{
+		/* code */
+	}
+		
 }
 void LinkedList::deleteNodeKhuVuc(string bienSo)
 {
@@ -685,7 +693,7 @@ void LinkedList::writeFileKhuVuc(string khuvuc) {
 	}
     fileout.close();
 }
-int LinkedList::update(string canCuocCongDan, string &khuvuc, string &hoTen, string &canCuoc, string &bienSoXe, string &mauXe)
+int LinkedList::update(string bienSoXe, string &khuvuc, string &hoTen, string &canCuoc, string &mauXe)
 {
 	int temp=1;
 	Node *currentNode = this->pHead;
@@ -698,7 +706,7 @@ int LinkedList::update(string canCuocCongDan, string &khuvuc, string &hoTen, str
 		Node *preNode = NULL;
 		while (currentNode != NULL)
 		{
-			if (checkStr(currentNode->pt.getCanCuocCongDan(), canCuocCongDan) == 1)
+			if (checkStr(currentNode->pt.getBienSoXe(), bienSoXe) == 1)
 			{
 				break;
 			}
@@ -722,9 +730,7 @@ int LinkedList::update(string canCuocCongDan, string &khuvuc, string &hoTen, str
 				cout << "\t"
 					 << "1.Cap nhat thong tin chu xe " << endl;
 				cout << "\t"
-					 << "2.Cap nhat bien so " << endl;
-				cout << "\t"
-					 << "3.Cap nhat mau son xe " << endl;
+					 << "2.Cap nhat mau son xe " << endl;
 				cout << "\t"
 					 << "0. Thoat " << endl;
 				cout << "\t\tNhap lua chon :";
@@ -746,15 +752,6 @@ int LinkedList::update(string canCuocCongDan, string &khuvuc, string &hoTen, str
 				}
 				case 2:
 				{
-					cout << "Nhap bien so moi :";
-					string bienSomoi;
-					cin.ignore();
-					getline(cin, bienSomoi);
-					currentNode->pt.setBienSomoi(bienSomoi);
-					break;
-				}
-				case 3:
-				{
 					cout << "Nhap mau son xe moi :";
 					string mauXemoi;
 					cin.ignore();
@@ -768,13 +765,12 @@ int LinkedList::update(string canCuocCongDan, string &khuvuc, string &hoTen, str
 			} while (sel);
 			hoTen = currentNode->pt.getTenChuXe();
 			canCuoc = currentNode->pt.getCanCuocCongDan();
-			bienSoXe = currentNode->pt.getBienSoXe();
 			mauXe = currentNode->pt.getMauXe();
 		}
 	}
 	return temp;
 }
-void LinkedList::updateKhuVuc(string canCuocCongDan, string hoTen, string canCuoc, string bienSoXe, string mauXe)
+void LinkedList::updateKhuVuc(string bienSoXe, string hoTen, string canCuoc, string mauXe)
 {
 	Node *currentNode = this->pHead;
     Node *preNode = NULL;
@@ -787,7 +783,7 @@ void LinkedList::updateKhuVuc(string canCuocCongDan, string hoTen, string canCuo
 		Node *preNode = NULL;
 		while (currentNode != NULL)
 		{
-			if (checkStr(currentNode->pt.getCanCuocCongDan(), canCuocCongDan) == 1)
+			if (checkStr(currentNode->pt.getBienSoXe(), bienSoXe) == 1)
 			{
 				break;
 			}
@@ -796,12 +792,10 @@ void LinkedList::updateKhuVuc(string canCuocCongDan, string hoTen, string canCuo
 		}
 		if (currentNode == NULL)
 		{}
-		else if (checkStr(currentNode->pt.getCanCuocCongDan(), canCuocCongDan) == 1)
+		else if (checkStr(currentNode->pt.getBienSoXe(), bienSoXe) == 1)
 		{
 		currentNode->pt.setTenchuxemoi(hoTen, canCuoc);
-	    currentNode->pt.setBienSomoi(bienSoXe);
 	    currentNode->pt.setMauXemoi(mauXe);
 		}
-	
-}
+	}
 }

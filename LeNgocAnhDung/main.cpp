@@ -344,16 +344,18 @@ int main() {
                 list->readFile();
                 cin.ignore();
                 c7:
-                cout << "Phuong tien muon xoa xe co bien so la: " << endl;
+                cout << "Phuong tien muon xoa co bien so la: " << endl;
                 b7:
                 getline(cin, bienso);
                 if(bienso.length() != 10 && bienso.length() != 9) {
 		            cout << "Bien so xe khong hop le. vui long nhap lai!" << endl;
 		            goto b7;
 	            }
-                int temp;
-                temp=list->deleteNode(bienso,khuvuc,1);
-                if(temp==0){ goto c7 ;}
+                oTo ot;
+                int temp=ot.checkBienSoXe(bienso);
+                if(temp==1){
+                    cout<<"Khong tim thay bien !"<<endl;
+                    goto c7;}
                 int sel;
                 thulong();
                 cout << "Nhap lua chon: " << endl;
@@ -361,7 +363,8 @@ int main() {
                 switch (sel)
                 {
                     case 1:
-                    {
+                    { 
+                    list->deleteNode(bienso,khuvuc,1);
                     list->writeFile(1);
                     if (bienso.length()==10)
                     {
@@ -372,13 +375,12 @@ int main() {
                     }
                     else if(bienso.length()==9)
                     {
-                        LinkedList *list2 = new LinkedList();
-                        list2->readFileOTo();
-                        list2->deleteNode(bienso,khuvuc,2);
-                        list2->writeFile(2);
+                        LinkedList *list3 = new LinkedList();
+                        list3->readFileOTo();
+                        list3->deleteNode(bienso,khuvuc,2);
+                        list3->writeFile(2);
                     }
                     upperCase(khuvuc);
-
                     LinkedList *list1 = new LinkedList();
                     if (khuvuc=="HAI CHAU")
                     {
@@ -414,13 +416,15 @@ int main() {
                     }
                     list1->deleteNodeKhuVuc(bienso);   
                     list1->writeFileKhuVuc(khuvuc);
+                    LinkedList *list4=new LinkedList();
+                    list4->deleteBienSo(bienso);
                     break;
                 }
                 case 2:
                 { 
                     break;
                 } 
-            } 
+               } 
                 thulong1();
                 int sel1;
                 cout << "Nhap lua chon: " << endl;
@@ -428,70 +432,78 @@ int main() {
                 switch (sel1)
                     {
                     case 1:
-                    {
-                        goto c7;
-                        break;
-                    }
+                    {goto c7;
+                     break;}
                     case 2:
-                    {
-                        break;
-                    }
+                    { break;}
                     }    
                 break;
            }
             case 8:
             {
                 LinkedList *list = new LinkedList();
-                string canCuoc;
-                string khuvuc,hoTen,cancuoc,bienSoXe,mauXe;
+                string biensoxe;
+                string khuvuc,hoTen,canCuoc,mauXe;
                 cin.ignore();
                 list->readFile();
                 a8:
-                cout<<"Chu xe can cap nhat co so can cuoc la :";
-	            getline(cin,canCuoc);
+                cout<<"Phuong tien can cap nhat co bien so la :";
+                getline(cin,biensoxe);
                 int temp;
-                temp=list->update(canCuoc,khuvuc,hoTen,cancuoc,bienSoXe,mauXe);
-                if(temp==0)
-                {
-                    goto a8;
-                }
-                list->writeFile(1);
-                upperCase(khuvuc);
-                LinkedList *list1 = new LinkedList();
-                if (khuvuc=="HAI CHAU")
-                {
-                    list1->readFileByRegion1();
-                } 
-                else if (khuvuc=="THANH KHE")
-                {
-                    list1->readFileByRegion2();
-                }
-                else if (khuvuc=="CAM LE")
-                {
-                   list1->readFileByRegion3();  
-                }
-                else if (khuvuc=="LIEN CHIEU")
-                {
-                   list1->readFileByRegion4();  
-                }
-                else if (khuvuc=="NGU HANH SON")
-                {
-                   list1->readFileByRegion5();  
-                }
-                else if (khuvuc=="SON TRA")
-                {
-                   list1->readFileByRegion6();  
-                }
-                else if (khuvuc=="HOA VANG")
-                {
-                   list1->readFileByRegion7();  
-                }
-                else if (khuvuc=="HOANG SA")
-                {
-                   list1->readFileByRegion8();  
-                }
-                list1->updateKhuVuc(canCuoc,hoTen,cancuoc,bienSoXe,mauXe);
-                list->writeFileKhuVuc(khuvuc);
+                temp=list->update(biensoxe,khuvuc,hoTen,canCuoc,mauXe);
+                if(temp==0){goto a8;}
+                int sel; 
+                    list->writeFile(1);
+                    if (biensoxe.length()==10)
+                    {
+                        LinkedList *list2 = new LinkedList();
+                        list2->readFileXeMay();
+                        list2->updateKhuVuc(biensoxe,hoTen,canCuoc,mauXe);
+                        list2->writeFile(3);
+                    }
+                    else if(biensoxe.length()==9)
+                    {
+                        LinkedList *list3 = new LinkedList();
+                        list3->readFileOTo();
+                        list3->updateKhuVuc(biensoxe,hoTen,canCuoc,mauXe);
+                        list3->writeFile(2);
+                    }
+                    upperCase(khuvuc);
+                    LinkedList *list1 = new LinkedList();
+                    if (khuvuc=="HAI CHAU")
+                    {
+                        list1->readFileByRegion1();
+                    } 
+                    else if (khuvuc=="THANH KHE")
+                    {
+                        list1->readFileByRegion2();
+                    }
+                    else if (khuvuc=="CAM LE")
+                    {
+                       list1->readFileByRegion3();  
+                    }
+                    else if (khuvuc=="LIEN CHIEU")
+                    {
+                       list1->readFileByRegion4();  
+                    }
+                    else if (khuvuc=="NGU HANH SON")
+                    {
+                       list1->readFileByRegion5();  
+                    }
+                    else if (khuvuc=="SON TRA")
+                    {
+                       list1->readFileByRegion6();  
+                    }
+                    else if (khuvuc=="HOA VANG")
+                    {
+                       list1->readFileByRegion7();  
+                    }
+                    else if (khuvuc=="HOANG SA")
+                    {
+                       list1->readFileByRegion8();  
+                    }
+                    list1->updateKhuVuc(biensoxe,hoTen,canCuoc,mauXe);
+                    list->writeFileKhuVuc(khuvuc);
                 break;
             }
             case 9:
