@@ -416,8 +416,6 @@ int main() {
                     }
                     list1->deleteNodeKhuVuc(bienso);   
                     list1->writeFileKhuVuc(khuvuc);
-                    LinkedList *list4=new LinkedList();
-                    list4->deleteBienSo(bienso);
                     break;
                 }
                 case 2:
