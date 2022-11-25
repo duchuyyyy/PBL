@@ -30,11 +30,12 @@ class LinkedList {
     void pushBackOTo(oTo pt);
     int deleteNode(string canCuocCongDan,string &khuvuc,int sel);
     void deleteNodeKhuVuc(string canCuocCongDan);
+    void deleteBienSo(string bienSo);
     int searchNode();
     void sortList();
     void docFile(int n, int sel);
     void writeFileKhuVuc(string khuvuc);
-    int update(string canCuocCongDan,string &khuvuc,string &hoTen,string &canCuoc,string &bienSoXe,string &mauXe);
-    void updateKhuVuc(string canCuocCongDan,string hoTen,string canCuoc,string bienSoXe,string mauXe);
+    int update(string canCuocCongDan,string &khuvuc,string &hoTen,string &canCuoc,string &mauXe);
+    void updateKhuVuc(string canCuocCongDan,string hoTen,string canCuoc,string mauXe);
 };
 #endif
