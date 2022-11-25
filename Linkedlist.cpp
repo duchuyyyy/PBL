@@ -264,20 +264,20 @@ int checkStr(string s1, string s2){
    }
    return flag;
 }
-
-void LinkedList::deleteNode(string canCuocCongDan, string &khuvuc)
+int LinkedList::deleteNode(string bienSoXe, string &khuvuc,int sel)
 {
+	int flag=1;
     Node *currentNode=this->pHead;
     if (currentNode == NULL)
 	{
-		cout<<"Danh sach rong !!";
+		cout<<endl;
 	}
 	else
 	{
 		Node *preNode=NULL;
 		while (currentNode != NULL)
 		{
-           if (checkStr(currentNode->pt.getCanCuocCongDan(),canCuocCongDan)==1)
+           if (checkStr(currentNode->pt.getBienSoXe(),bienSoXe)==1)
 		   {
 			break;
 		   }
@@ -286,42 +286,105 @@ void LinkedList::deleteNode(string canCuocCongDan, string &khuvuc)
 		}
 		if (currentNode == NULL)
 		{
-			cout<<"Khong tim thay phuong tien !!"<<endl;
+			// cout<<"Khong tim thay phuong tien !!"<<endl;
+			cout << endl;
+			flag=0;
 		}
 		else
 		{
-			if (currentNode == this->pHead)
+            khuvuc = currentNode->pt.getNoiDangKyXe();
+			if(sel==1)
 			{
-				this->pHead=this->pHead->next;
-			}
-			else if (currentNode->next == NULL )
+			    if (currentNode == this->pHead)
+			    {
+			    	this->pHead=this->pHead->next;
+			    }
+			    else if (currentNode->next == NULL )
+			    {
+			    	this->pTail=preNode;
+			    }
+			    else
+			    {
+			    	preNode->next=currentNode->next;
+			    }
+			    currentNode->next = NULL;
+			    delete currentNode;
+			    currentNode=NULL;
+			    ifstream filein;
+                filein.open("soluongphuongtien.txt", ios_base::in);
+                int count;
+                filein >> count;
+                count--;
+                filein.close();
+                ofstream fileout;
+                fileout.open("soluongphuongtien.txt", ios_base::out);
+                fileout << count;
+                fileout.close();    
+			} 
+			else if (sel==2)
 			{
-				this->pTail=preNode;
+				if (currentNode == this->pHead)
+			    {
+			    	this->pHead=this->pHead->next;
+			    }
+			    else if (currentNode->next == NULL )
+			    {
+			    	this->pTail=preNode;
+			    }
+			    else
+			    {
+			    	preNode->next=currentNode->next;
+			    }
+			    currentNode->next = NULL;
+			    delete currentNode;
+			    currentNode=NULL;
+                ifstream filein1;
+                filein1.open("soluongoto.txt", ios_base::in);
+                int count1;
+                filein1 >> count1;
+                count1--;
+                filein1.close();
+                ofstream fileout1;
+                fileout1.open("soluongoto.txt", ios_base::out);
+                fileout1 << count1;
+                fileout1.close();
+			} 
+			else if (sel==3)
+			{ 
+				if (currentNode == this->pHead)
+			    {
+			    	this->pHead=this->pHead->next;
+			    }
+			    else if (currentNode->next == NULL )
+			    {
+			    	this->pTail=preNode;
+			    }
+			    else
+			    {
+			    	preNode->next=currentNode->next;
+			    }
+			    
+			    currentNode->next = NULL;
+			    delete currentNode;
+			    currentNode=NULL;
+				ifstream filein1;
+                filein1.open("soluongxemay.txt", ios_base::in);
+                int count1;
+                filein1 >> count1;
+                count1--;
+                filein1.close();
+                ofstream fileout1;
+                fileout1.open("soluongxemay.txt", ios_base::out);
+                fileout1 << count1;
+                fileout1.close();
 			}
-			else
-			{
-				preNode->next=currentNode->next;
-			}
-			khuvuc = currentNode->pt.getNoiDangKyXe();
-			currentNode->next = NULL;
-			delete currentNode;
-			currentNode=NULL;
-			ifstream filein;
-            filein.open("soluongphuongtien.txt", ios_base::in);
-            int count;
-            filein >> count;
-            count--;
-            filein.close();
-            ofstream fileout;
-            fileout.open("soluongphuongtien.txt", ios_base::out);
-            fileout << count;
-            fileout.close();        
 		}
 
 	}
-
+	return flag;
 }
-void LinkedList::deleteNodeKhuVuc(string canCuocCongDan)
+
+void LinkedList::deleteNodeKhuVuc(string bienSo)
 {
     Node *currentNode=this->pHead;
     if (currentNode == NULL)
@@ -333,7 +396,7 @@ void LinkedList::deleteNodeKhuVuc(string canCuocCongDan)
 		Node *preNode=NULL;
 		while (currentNode != NULL)
 		{
-           if (checkStr(currentNode->pt.getCanCuocCongDan(),canCuocCongDan)==1)
+           if (checkStr(currentNode->pt.getBienSoXe(),bienSo)==1)
 		   {
 			break;
 		   }
@@ -342,7 +405,7 @@ void LinkedList::deleteNodeKhuVuc(string canCuocCongDan)
 		}
 		if (currentNode==NULL)
 		{
-			cout<<"\nKhong tim thay phuong tien !!"<<endl;
+			cout<<endl;
 		}
 		else
 		{
@@ -469,7 +532,6 @@ void LinkedList::deleteNodeKhuVuc(string canCuocCongDan)
 		}
 
 	}
-
 }
 void LinkedList::printList() {
 	cout << endl;
@@ -538,25 +600,33 @@ void LinkedList::sortList() {
 		}
 	}
 }
-void LinkedList::writeFile() {
-	ofstream fileout; 
-	fileout.open("thongtinxe.txt", ios_base::trunc);
+void LinkedList::writeFile(int sel) {
+	 ofstream fileout;
+	if(sel==1) {
+		fileout.open("thongtinxe.txt", ios_base::trunc);
+	}
+    else if(sel==2) {
+		fileout.open("oto.txt",ios_base::trunc);
+	}
+	else if(sel==3) {
+		fileout.open("xemay.txt",ios_base::trunc);
+	}
 	Node* currentNode = this->pHead;
 	while(currentNode != NULL) {
-	fileout << "Ten chu xe: " << currentNode->pt.getTenChuXe() << "," << endl;
-    fileout << "So can cuoc cong dan: " << currentNode->pt.getCanCuocCongDan() << "." << endl;
-	fileout << "Hang xe: " << currentNode->pt.getHangSanXuat() << "," << endl;
-    fileout << "Loai xe: " << currentNode->pt.getLoaiXe() << "," << endl;
-    fileout << "Mau xe: " << currentNode->pt.getMauXe() << "," << endl;
-    fileout << "Ten xe: " << currentNode->pt.getTenXe() << "," << endl;
-	fileout << "Bien so xe: " << currentNode->pt.getBienSoXe() << "," << endl;
-	fileout << currentNode->pt.getNgayDangKyXe() << endl;
-	fileout << currentNode->pt.getThangDangKyXe() << endl;
-	fileout << currentNode->pt.getNamDangKyXe() << endl;
-	fileout << "Noi dang ky xe: " << currentNode->pt.getNoiDangKyXe() << "." <<  endl;
-	currentNode = currentNode->next;
+		fileout << "Ten chu xe: " << currentNode->pt.getTenChuXe() << "," << endl;
+    	fileout << "So can cuoc cong dan: " << currentNode->pt.getCanCuocCongDan() << "." << endl;
+		fileout << "Hang xe: " << currentNode->pt.getHangSanXuat() << "," << endl;
+    	fileout << "Loai xe: " << currentNode->pt.getLoaiXe() << "," << endl;
+    	fileout << "Mau xe: " << currentNode->pt.getMauXe() << "," << endl;
+    	fileout << "Ten xe: " << currentNode->pt.getTenXe() << "," << endl;
+		fileout << "Bien so xe: " << currentNode->pt.getBienSoXe() << "," << endl;
+		fileout << currentNode->pt.getNgayDangKyXe() << endl;
+		fileout << currentNode->pt.getThangDangKyXe() << endl;
+		fileout << currentNode->pt.getNamDangKyXe() << endl;
+		fileout << "Noi dang ky xe: " << currentNode->pt.getNoiDangKyXe() << "." <<  endl;
+		currentNode = currentNode->next;
 	}
-    fileout.close();
+    	fileout.close();
 }
 void LinkedList::writeFileKhuVuc(string khuvuc) {
 	ofstream fileout; 
@@ -605,7 +675,7 @@ void LinkedList::writeFileKhuVuc(string khuvuc) {
 	}
     fileout.close();
 }
-int LinkedList::update(string canCuocCongDan, string &khuvuc, string &hoTen, string &canCuoc, string &bienSoXe, string &mauXe)
+int LinkedList::update(string bienSoXe, string &khuvuc, string &hoTen, string &canCuoc, string &mauXe)
 {
 	int temp=1;
 	Node *currentNode = this->pHead;
@@ -618,7 +688,7 @@ int LinkedList::update(string canCuocCongDan, string &khuvuc, string &hoTen, str
 		Node *preNode = NULL;
 		while (currentNode != NULL)
 		{
-			if (checkStr(currentNode->pt.getCanCuocCongDan(), canCuocCongDan) == 1)
+			if (checkStr(currentNode->pt.getBienSoXe(), bienSoXe) == 1)
 			{
 				break;
 			}
@@ -642,9 +712,7 @@ int LinkedList::update(string canCuocCongDan, string &khuvuc, string &hoTen, str
 				cout << "\t"
 					 << "1.Cap nhat thong tin chu xe " << endl;
 				cout << "\t"
-					 << "2.Cap nhat bien so " << endl;
-				cout << "\t"
-					 << "3.Cap nhat mau son xe " << endl;
+					 << "2.Cap nhat mau son xe " << endl;
 				cout << "\t"
 					 << "0. Thoat " << endl;
 				cout << "\t\tNhap lua chon :";
@@ -666,15 +734,6 @@ int LinkedList::update(string canCuocCongDan, string &khuvuc, string &hoTen, str
 				}
 				case 2:
 				{
-					cout << "Nhap bien so moi :";
-					string bienSomoi;
-					cin.ignore();
-					getline(cin, bienSomoi);
-					currentNode->pt.setBienSomoi(bienSomoi);
-					break;
-				}
-				case 3:
-				{
 					cout << "Nhap mau son xe moi :";
 					string mauXemoi;
 					cin.ignore();
@@ -688,13 +747,12 @@ int LinkedList::update(string canCuocCongDan, string &khuvuc, string &hoTen, str
 			} while (sel);
 			hoTen = currentNode->pt.getTenChuXe();
 			canCuoc = currentNode->pt.getCanCuocCongDan();
-			bienSoXe = currentNode->pt.getBienSoXe();
 			mauXe = currentNode->pt.getMauXe();
 		}
 	}
 	return temp;
 }
-void LinkedList::updateKhuVuc(string canCuocCongDan, string hoTen, string canCuoc, string bienSoXe, string mauXe)
+void LinkedList::updateKhuVuc(string bienSoXe, string hoTen, string canCuoc, string mauXe)
 {
 	Node *currentNode = this->pHead;
     Node *preNode = NULL;
@@ -707,7 +765,7 @@ void LinkedList::updateKhuVuc(string canCuocCongDan, string hoTen, string canCuo
 		Node *preNode = NULL;
 		while (currentNode != NULL)
 		{
-			if (checkStr(currentNode->pt.getCanCuocCongDan(), canCuocCongDan) == 1)
+			if (checkStr(currentNode->pt.getBienSoXe(), bienSoXe) == 1)
 			{
 				break;
 			}
@@ -715,15 +773,11 @@ void LinkedList::updateKhuVuc(string canCuocCongDan, string hoTen, string canCuo
 			currentNode = currentNode->next;
 		}
 		if (currentNode == NULL)
-		{
-			cout << "" << endl;
-		}
-		else if (checkStr(currentNode->pt.getCanCuocCongDan(), canCuocCongDan) == 1)
+		{}
+		else if (checkStr(currentNode->pt.getBienSoXe(), bienSoXe) == 1)
 		{
 		currentNode->pt.setTenchuxemoi(hoTen, canCuoc);
-	    currentNode->pt.setBienSomoi(bienSoXe);
 	    currentNode->pt.setMauXemoi(mauXe);
 		}
-	
-}
+	}
 }

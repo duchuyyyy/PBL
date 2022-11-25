@@ -12,7 +12,7 @@ class LinkedList {
     public:
     LinkedList();
     ~LinkedList();
-    void writeFile();
+    void writeFile(int sel);
     void readFile();
     void readFileByRegion1();
     void readFileByRegion2();
@@ -28,13 +28,13 @@ class LinkedList {
     void printList();
     void insertNode(Node* node, int pos);
     void pushBackOTo(oTo pt);
-    void deleteNode(string canCuocCongDan,string &khuvuc);
-    void deleteNodeKhuVuc(string canCuocCongDan);
+    int deleteNode(string bienSoXe, string &khuvuc, int sel);
+    void deleteNodeKhuVuc(string bienSoXe);
     int searchNode();
     void sortList();
     void docFile(int n, int sel);
     void writeFileKhuVuc(string khuvuc);
-    int update(string canCuocCongDan,string &khuvuc,string &hoTen,string &canCuoc,string &bienSoXe,string &mauXe);
-    void updateKhuVuc(string canCuocCongDan,string hoTen,string canCuoc,string bienSoXe,string mauXe);
+    int update(string bienSoXe, string &khuvuc, string &hoTen, string &canCuoc, string &mauXe);
+    void updateKhuVuc(string bienSoXe, string hoTen, string canCuoc, string mauXe);
 };
 #endif
