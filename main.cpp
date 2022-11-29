@@ -1,8 +1,7 @@
-#include<iostream>
-#include<string>
-#include<windows.h>
+#include <bits/stdc++.h>
+#include <windows.h>
 #include "oto.cpp"
-#include"Node.cpp"
+#include "Node.cpp"
 #include "Linkedlist.cpp"
 #include "xemay.cpp"
 using namespace std;
@@ -57,18 +56,10 @@ void khuVuc(){
     printf("\t\t|               0. THOAT                                        |\n");
     printf("\t\t----------------------------------------------------------------\n");
 }
-void thulong()
-{
-    printf("\t\t----------------------------------------------------------------\n");
-    printf("\t\t|         BAN CO CHAC CHAN KHONG ?                              |\n");
-    printf("\t\t|               1. CO                                           |\n");
-    printf("\t\t|               2. KHONG                                        |\n");
-    printf("\t\t----------------------------------------------------------------\n");
-}
 void thulong1()
 {
     printf("\t\t----------------------------------------------------------------\n");
-    printf("\t\t|         BAN CO MUON TIEP TUC  ?                               |\n");
+    printf("\t\t|         BAN CO MUON LUU  ?                                    |\n");
     printf("\t\t|               1. CO                                           |\n");
     printf("\t\t|               2. KHONG                                        |\n");
     printf("\t\t----------------------------------------------------------------\n");   
@@ -84,6 +75,23 @@ int check(string s1, string s2){
       n++;
    }
    return flag;
+}
+void xoaBienSo(string bienso) {
+	
+	string line;
+	ifstream fin;
+	fin.open("biensoxe.txt");
+	ofstream temp;
+	temp.open("temp.txt");
+	while (getline(fin,line))
+	{
+    	 if (line != bienso)
+            temp << line << endl;
+	}
+	temp.close();
+	fin.close();
+	remove("biensoxe.txt");
+	rename("temp.txt","biensoxe.txt");
 }
 void thongKeSoLuong() {
     ifstream filecountHC, filecountTK, filecountLC, filecountHS;
@@ -339,14 +347,15 @@ int main() {
             case 7:
             {  
                 string khuvuc;
-                LinkedList *list = new LinkedList();
                 string bienso;
-                list->readFile();
+                LinkedList *list = new LinkedList();
+                LinkedList *list2 = new LinkedList();
+                LinkedList *list3 = new LinkedList();
                 cin.ignore();
                 c7:
                 cout << "Phuong tien muon xoa co bien so la: " << endl;
                 b7:
-                getline(cin, bienso);
+                getline(cin,bienso);
                 if(bienso.length() != 10 && bienso.length() != 9) {
 		            cout << "Bien so xe khong hop le. vui long nhap lai!" << endl;
 		            goto b7;
@@ -356,31 +365,21 @@ int main() {
                 if(temp==1){
                     cout<<"Khong tim thay bien !"<<endl;
                     goto c7;}
-                int sel;
-                thulong();
-                cout << "Nhap lua chon: " << endl;
-                cin >> sel;
-                switch (sel)
-                {
-                    case 1:
-                    { 
-                    list->deleteNode(bienso,khuvuc,1);
-                    list->writeFile(1);
+                    list->readFile();
+                    list->deleteNode(bienso,khuvuc);
                     if (bienso.length()==10)
                     {
-                        LinkedList *list2 = new LinkedList();
                         list2->readFileXeMay();
-                        list2->deleteNode(bienso,khuvuc,3);
-                        list2->writeFile(3);
+                        list2->deleteNode(bienso,khuvuc);   
                     }
                     else if(bienso.length()==9)
                     {
-                        LinkedList *list3 = new LinkedList();
                         list3->readFileOTo();
-                        list3->deleteNode(bienso,khuvuc,2);
-                        list3->writeFile(2);
+                        list3->deleteNode(bienso,khuvuc);
+    
                     }
                     upperCase(khuvuc);
+                    cout<<"T3"<<endl;
                     LinkedList *list1 = new LinkedList();
                     if (khuvuc=="HAI CHAU")
                     {
@@ -414,15 +413,9 @@ int main() {
                     {
                        list1->readFileByRegion8();  
                     }
-                    list1->deleteNodeKhuVuc(bienso);   
-                    list1->writeFileKhuVuc(khuvuc);
-                    break;
-                }
-                case 2:
-                { 
-                    break;
-                } 
-               } 
+                    list1->deleteNode(bienso,khuvuc);
+                    upperCase(khuvuc);   
+                    //list1->writeFileKhuVuc(khuvuc);
                 thulong1();
                 int sel1;
                 cout << "Nhap lua chon: " << endl;
@@ -430,12 +423,52 @@ int main() {
                 switch (sel1)
                     {
                     case 1:
-                    {goto c7;
+                    {
+                        list->writeFile(1);
+                        ifstream filein;
+                        filein.open("soluongphuongtien.txt", ios_base::in);
+                        int count;
+                        filein >> count;
+                        count--;
+                        filein.close();
+                        ofstream fileout;
+                        fileout.open("soluongphuongtien.txt", ios_base::out);
+                        fileout << count;
+                        fileout.close();  
+                        if (bienso.length()==10)
+                        {
+                        list2->writeFile(2);
+                        ifstream filein1;
+                        filein1.open("soluongxemay.txt", ios_base::in);
+                        int count1;
+                        filein1 >> count1;
+                        count1--;
+                        filein1.close();
+                        ofstream fileout1;
+                        fileout1.open("soluongxemay.txt", ios_base::out);
+                        fileout1 << count1;
+                        fileout1.close();
+                        }else if (bienso.length()==9)
+                        {
+                        list3->writeFile(3);
+                        ifstream filein2;
+                        filein2.open("soluongoto.txt", ios_base::in);
+                        int count2;
+                        filein2 >> count2;
+                        count2--;
+                        filein2.close();
+                        ofstream fileout2;
+                        fileout2.open("soluongoto.txt", ios_base::out);
+                        fileout2 << count2;
+                        fileout2.close();
+                        }
+                        list1->writeFileKhuVuc(khuvuc);
+                        xoaBienSo(bienso);
                      break;}
                     case 2:
                     { break;}
                     }    
-                break;
+                 break;
            }
             case 8:
             {
@@ -501,7 +534,7 @@ int main() {
                        list1->readFileByRegion8();  
                     }
                     list1->updateKhuVuc(biensoxe,hoTen,canCuoc,mauXe);
-                    list->writeFileKhuVuc(khuvuc);
+                    list1->writeFileKhuVuc(khuvuc);
                 break;
             }
             case 9:
@@ -522,6 +555,4 @@ int main() {
     }while(sel != 0);   
     return 0;
 }
-
-
 
