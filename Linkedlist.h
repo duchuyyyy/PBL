@@ -29,7 +29,8 @@ class LinkedList {
     void insertNode(Node* node, int pos);
     void pushBackOTo(oTo pt);
     void deleteNode(string bienSoXe, string &khuvuc);
-    int searchNode();
+    int searchNodeByCCCD();
+    int searchNodeByBienSo();
     void sortList();
     void docFile(int n, int sel);
     void writeFileKhuVuc(string khuvuc);

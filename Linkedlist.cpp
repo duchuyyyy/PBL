@@ -312,7 +312,7 @@ void LinkedList::printList() {
 		currentNode = currentNode->next;
 	}
 }
-int LinkedList::searchNode() {
+int LinkedList::searchNodeByCCCD() {
 	int flag = 0;
 	string canCuocCongDan;
 a:
@@ -326,6 +326,37 @@ a:
 	Node* currentNode = this->pHead;
 	while (currentNode != NULL) { 
 		if (checkStr(currentNode->pt.getCanCuocCongDan(),canCuocCongDan) == 1) {
+			cout << "Da tim thay phuong tien can tim: " << endl;
+			cout << endl;
+			currentNode->printData();
+			flag = 1;
+		}
+		
+		currentNode = currentNode->next;
+	  }
+	}
+	if(flag == 1) {
+		return 1;
+	} else {
+		cout << "Khong ton tai phuong tien can tim!" << endl;
+		return 0;
+	}
+}
+
+int LinkedList::searchNodeByBienSo() {
+	int flag = 0;
+	string bienSoXe;
+a:
+	cout << "Nhap bien so xe can tim kiem: "  << endl;
+	cin >> bienSoXe;
+	if(bienSoXe.length() != 10 && bienSoXe.length() != 9) {
+		cout << "Bien so xe khong hop le. Vui long nhap lai!" << endl;
+		goto a;
+	}
+	else {
+	Node* currentNode = this->pHead;
+	while (currentNode != NULL) { 
+		if (checkStr(currentNode->pt.getBienSoXe(),bienSoXe) == 1) {
 			cout << "Da tim thay phuong tien can tim: " << endl;
 			cout << endl;
 			currentNode->printData();
