@@ -235,21 +235,36 @@ void xeMay::nhapThongTin() {
    cin.ignore();
    cout << "Nhap thong tin cua xe may: " << endl;
    cout << endl;
-   cout << "Nhap ho ten chu xe: " << endl;
-   getline(cin,this->tenChuXe);
-   chuyendoi(this->tenChuXe);
+a:
+    cout << "Nhap ho ten chu xe: " << endl;
+    getline(cin,this->tenChuXe);
+    int check1 = this->checkNhapKyTu(this->tenChuXe);
+    chuyenDoi(this->tenChuXe);
+    if(!check1) {
+        goto a;
+    }
    cout << "Nhap can cuoc cong dan: " << endl;
    this->checkCanCuocCongDan(this->canCuocCongDan);
    cout << "Nhap hang xe: " << endl;
    this->checkHangSanXuat(this->hangSanXuat);
-   cout << "Nhap loai xe: " << endl;
+   cout << "Nhap loai xe(Nhap so phan khoi cua xe): " << endl;
    getline(cin, this->loaiXe);
-   cout << "Nhap mau xe: " << endl;
-   getline(cin, this->mauXe);
-   chuyendoi(this->mauXe);
-   cout << "Nhap ten xe: " << endl;
-   getline(cin, this->tenXe);
-   chuyendoi(this->tenXe);
+b:
+    cout << "Nhap mau xe: " << endl;
+    getline(cin, this->mauXe);
+    int check2 = this->checkNhapKyTu(this->mauXe);
+    chuyenDoi(this->mauXe);
+    if(!check2) {
+        goto b;
+    }
+c:
+    cout << "Nhap ten xe: " << endl;
+    getline(cin, this->tenXe);
+    int check3 = this->checkNhapKyTu(this->tenXe);
+    chuyenDoi(this->tenXe);
+    if(!check3) {
+        goto c;
+    }
    cout << "Nhap noi dang ky xe: " << endl;
    this->checkNoiDangKyXe(this->noiDangKyXe);
    cout << "Nhap bien so xe: " << endl;
@@ -331,7 +346,7 @@ void xeMay::kiemTraKiemDinh(int d, int m, int y) {
         int kc2 = day(d, m, y);
         int kc = abs(kc2 - kc1);
         cout << "\n";
-        if (kc > 182) {
+        if (kc > 1825) {
             setColor(4);
             cout << "Xe da qua han kiem dinh!" << endl;
             setColor(7);

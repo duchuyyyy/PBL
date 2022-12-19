@@ -48,6 +48,14 @@ void oTo::setData(string tenChuXe, string canCuocCongDan, string hangSanXuat, st
         this->namDangKyXe = namDangKyXe;
         this->noiDangKyXe = noiDangKyXe;
 }
+
+int oTo::checkNhapKyTu(string kyTu) {
+    if(kyTu.length() == 0) {
+        cout << "Vui long khong duoc de trong!" << endl;
+        return 0;
+    }
+    return 1;
+}
 string oTo::getTenChuXe(){
     return this->tenChuXe;
 }
@@ -285,22 +293,38 @@ void oTo::kiemTraKiemDinh(int d, int m, int y){
         }
 }
 void oTo::nhapThongTin(){
+    cout << "Nhap thong tin o to" << endl;
     cin.ignore();
+a:
     cout << "Nhap ho ten chu xe: " << endl;
     getline(cin,this->tenChuXe);
+    int check1 = this->checkNhapKyTu(this->tenChuXe);
     chuyenDoi(this->tenChuXe);
+    if(!check1) {
+        goto a;
+    }
     cout << "Nhap can cuoc cong dan: " << endl;
     this->checkCanCuocCongDan(this->canCuocCongDan);
     cout << "Nhap hang xe: " << endl;
     this->checkHangSanXuat(this->hangSanXuat);
     cout << "Nhap loai xe: " << endl;
     this->checkLoaiXe(this->loaiXe);
+b:
     cout << "Nhap mau xe: " << endl;
     getline(cin, this->mauXe);
+    int check2 = this->checkNhapKyTu(this->mauXe);
     chuyenDoi(this->mauXe);
+    if(!check2) {
+        goto b;
+    }
+c:
     cout << "Nhap ten xe: " << endl;
     getline(cin, this->tenXe);
+    int check3 = this->checkNhapKyTu(this->tenXe);
     chuyenDoi(this->tenXe);
+    if(!check3) {
+        goto c;
+    }
     cout << "Nhap bien so xe: " << endl;
     this->setBienSoXe(this->loaiXe, this->bienSoXe);
     this->ghiBienSoXe(this->bienSoXe);

@@ -61,5 +61,6 @@ public:
     void setTenchuxemoi(string tenChuXe,string canCuocCongDan);
     void setBienSomoi(string bienSoXe);
     void setMauXemoi(string mauXe);
+    int checkNhapKyTu(string);
 };
 #endif
