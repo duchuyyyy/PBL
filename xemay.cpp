@@ -38,11 +38,11 @@ void xeMay::checkHangSanXuat(string& hangSanXuat) {
 }
 int checkkytu(string& s) {
     for(int i = 0; i < s.length(); ++i){
-    	if(isalpha(s[i])) {
-    		return 0;
+    	if(isdigit(s[i])) {
+    		return 1;
 		}
 	}
-    return 1;
+    return 0;
 }
 void xeMay::setBienSoXe(string& khuVuc, string& bienSoXe) {
         string bienSo;
