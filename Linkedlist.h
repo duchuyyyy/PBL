@@ -36,5 +36,6 @@ class LinkedList {
     void writeFileKhuVuc(string khuvuc);
     int update(string bienSoXe, string &khuvuc, string &hoTen, string &canCuoc, string &mauXe);
     void updateKhuVuc(string bienSoXe, string hoTen, string canCuoc, string mauXe);
+    void kiemTraThongTin(string canCuoc, string &hoTen);
 };
 #endif

@@ -24,6 +24,8 @@ public:
     oTo(string tenChuXe, string canCuocCongDan, string hangSanXuat, string loaiXe, string mauXe, string tenXe, string bienSoXe, int ngayDangKyXe, int thangDangKyXe, int namDangKyXe, string noiDangKyXe);
     void setData(string tenChuXe, string canCuocCongDan, string hangSanXuat, string loaiXe, string mauXe, string tenXe, string bienSoXe, int ngayDangKyXe, int thangDangKyXe, int namDangKyXe, string noiDangKyXe);
     void nhapThongTin();
+    void setBienSoXe(string& loaiXe, string& bienSoXe);
+    void kiemTraKiemDinh(int d, int m, int y);
     string getTenChuXe();
     string getCanCuocCongDan();
     string getHangSanXuat();
@@ -48,8 +50,6 @@ public:
     void checkNoiDangKyXe(string& noiDangKyXe);
     int checkBienSoXe(string& bienSoXe);
     void ghiBienSoXe(string& bienSoXe);
-    void setBienSoXe(string& loaiXe, string& bienSoXe);
-    void kiemTraKiemDinh(int d, int m, int y);
     void thongTinPhuongTienKhuVuc();
     void docFile(ifstream &filein);
     void nhapPhuongTienVaoFile();

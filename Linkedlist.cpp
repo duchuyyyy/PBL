@@ -299,6 +299,111 @@ void LinkedList::deleteNode(string bienSoXe, string &khuvuc)
 					delete currentNode;
 			        currentNode=NULL;
 			    }
+			upperCase(khuvuc);
+		if (khuvuc=="HAI CHAU")
+			{
+			ifstream filein;
+			filein.open("soluongphuongtienHaiChau.txt", ios_base::in);
+            int count;
+            filein >> count;
+            count--;
+            filein.close();
+            ofstream fileout;
+            fileout.open("soluongphuongtienHaiChau.txt", ios_base::out);
+            fileout << count;
+            fileout.close();
+			}
+	else if (khuvuc=="THANH KHE")
+			{
+			ifstream filein;
+			filein.open("soluongphuongtienThanhKhe.txt", ios_base::in);
+            int count1;
+            filein >> count1;
+            count1--;
+            filein.close();
+            ofstream fileout;
+            fileout.open("soluongphuongtienThanhKhe.txt", ios_base::out);
+            fileout << count1;
+            fileout.close();
+			}
+	else if (khuvuc=="CAM LE")
+			{
+			ifstream filein;
+			filein.open("soluongphuongtienCamLe.txt", ios_base::in);
+            int count2;
+            filein >> count2;
+            count2--;
+            filein.close();
+            ofstream fileout;
+            fileout.open("soluongphuongtienCamLe.txt", ios_base::out);
+            fileout << count2;
+            fileout.close();
+			}
+	else if (khuvuc=="HOANG SA")
+			{
+			ifstream filein;
+			filein.open("soluongphuongtienHoangSa.txt", ios_base::in);
+            int count3;
+            filein >> count3;
+            count3--;
+            filein.close();
+            ofstream fileout;
+            fileout.open("soluongphuongtienHoangSa.txt", ios_base::out);
+            fileout << count3;
+            fileout.close();
+			}
+	else if (khuvuc=="LIEN CHIEU")
+			{
+			ifstream filein;
+			filein.open("soluongphuongtienLienChieu.txt", ios_base::in);
+            int count4;
+            filein >> count4;
+            count4--;
+            filein.close();
+            ofstream fileout;
+            fileout.open("soluongphuongtienLienChieu.txt", ios_base::out);
+            fileout << count4;
+            fileout.close();
+			}
+	else if (khuvuc=="HOA VANG")
+			{
+			ifstream filein;
+			filein.open("soluongphuongtienHoaVang.txt", ios_base::in);
+            int count5;
+            filein >> count5;
+            count5--;
+            filein.close();
+            ofstream fileout;
+            fileout.open("soluongphuongtienHoaVang.txt", ios_base::out);
+            fileout << count5;
+            fileout.close();
+			}
+	else if (khuvuc=="NGU HANH SON")
+			{
+			ifstream filein;
+			filein.open("soluongphuongtienNguHanhSon.txt", ios_base::in);
+            int count6;
+            filein >> count6;
+            count6--;
+            filein.close();
+            ofstream fileout;
+            fileout.open("soluongphuongtienNguHanhSon.txt", ios_base::out);
+            fileout << count6;
+            fileout.close();
+			}
+	else if (khuvuc=="SON TRA")
+			{
+			ifstream filein;
+			filein.open("soluongphuongtienSonTra.txt", ios_base::in);
+            int count7;
+            filein >> count7;
+            count7--;
+            filein.close();
+            ofstream fileout;
+            fileout.open("soluongphuongtienSonTra.txt", ios_base::out);
+            fileout << count7;
+            fileout.close();
+			}
 			    
 }
 void LinkedList::printList() {
@@ -473,110 +578,6 @@ void LinkedList::writeFileKhuVuc(string khuvuc) {
 	currentNode = currentNode->next;
 	}
     fileout.close();
-	if (khuvuc=="HAI CHAU")
-			{
-			ifstream filein;
-			filein.open("soluongphuongtienHaiChau.txt", ios_base::in);
-            int count;
-            filein >> count;
-            count--;
-            filein.close();
-            ofstream fileout;
-            fileout.open("soluongphuongtienHaiChau.txt", ios_base::out);
-            fileout << count;
-            fileout.close();
-			}
-	else if (khuvuc=="THANH KHE")
-			{
-			ifstream filein;
-			filein.open("soluongphuongtienThanhKhe.txt", ios_base::in);
-            int count1;
-            filein >> count1;
-            count1--;
-            filein.close();
-            ofstream fileout;
-            fileout.open("soluongphuongtienThanhKhe.txt", ios_base::out);
-            fileout << count1;
-            fileout.close();
-			}
-	else if (khuvuc=="CAM LE")
-			{
-			ifstream filein;
-			filein.open("soluongphuongtienCamLe.txt", ios_base::in);
-            int count2;
-            filein >> count2;
-            count2--;
-            filein.close();
-            ofstream fileout;
-            fileout.open("soluongphuongtienCamLe.txt", ios_base::out);
-            fileout << count2;
-            fileout.close();
-			}
-	else if (khuvuc=="HOANG SA")
-			{
-			ifstream filein;
-			filein.open("soluongphuongtienHoangSa.txt", ios_base::in);
-            int count3;
-            filein >> count3;
-            count3--;
-            filein.close();
-            ofstream fileout;
-            fileout.open("soluongphuongtienHoangSa.txt", ios_base::out);
-            fileout << count3;
-            fileout.close();
-			}
-	else if (khuvuc=="LIEN CHIEU")
-			{
-			ifstream filein;
-			filein.open("soluongphuongtienLienChieu.txt", ios_base::in);
-            int count4;
-            filein >> count4;
-            count4--;
-            filein.close();
-            ofstream fileout;
-            fileout.open("soluongphuongtienLienChieu.txt", ios_base::out);
-            fileout << count4;
-            fileout.close();
-			}
-	else if (khuvuc=="HOA VANG")
-			{
-			ifstream filein;
-			filein.open("soluongphuongtienHoaVang.txt", ios_base::in);
-            int count5;
-            filein >> count5;
-            count5--;
-            filein.close();
-            ofstream fileout;
-            fileout.open("soluongphuongtienHoaVang.txt", ios_base::out);
-            fileout << count5;
-            fileout.close();
-			}
-	else if (khuvuc=="NGU HANH SON")
-			{
-			ifstream filein;
-			filein.open("soluongphuongtienNguHanhSon.txt", ios_base::in);
-            int count6;
-            filein >> count6;
-            count6--;
-            filein.close();
-            ofstream fileout;
-            fileout.open("soluongphuongtienNguHanhSon.txt", ios_base::out);
-            fileout << count6;
-            fileout.close();
-			}
-	else if (khuvuc=="SON TRA")
-			{
-			ifstream filein;
-			filein.open("soluongphuongtienSonTra.txt", ios_base::in);
-            int count7;
-            filein >> count7;
-            count7--;
-            filein.close();
-            ofstream fileout;
-            fileout.open("soluongphuongtienSonTra.txt", ios_base::out);
-            fileout << count7;
-            fileout.close();
-			}
 }
 int LinkedList::update(string bienSoXe, string &khuvuc, string &hoTen, string &canCuoc, string &mauXe)
 {
@@ -609,7 +610,7 @@ int LinkedList::update(string bienSoXe, string &khuvuc, string &hoTen, string &c
 			int sel;
 			do
 			{
-				cout << "_____________________________________________________________" << endl;
+				cout << "___________________________________________________________" << endl;
 				cout << "|                   CAP NHAT THONG TIN                      |" << endl;
 				cout << "|___________________________________________________________|" << endl;
 				cout << "\t"
@@ -627,11 +628,9 @@ int LinkedList::update(string bienSoXe, string &khuvuc, string &hoTen, string &c
 					cout << "Nhap thong tin chu moi " << endl;
 					string tenChumoi, canCuocmoi;
 					cin.ignore();
-					cout << "Ho ten :";
-					getline(cin, tenChumoi);
-					cout << endl;
 					cout << "Can cuoc :";
 					checkCanCuoc(canCuocmoi);
+					kiemTraThongTin(canCuocmoi,tenChumoi);
 					currentNode->pt.setTenchuxemoi(tenChumoi, canCuocmoi);
 					break;
 				}
@@ -684,3 +683,29 @@ void LinkedList::updateKhuVuc(string bienSoXe, string hoTen, string canCuoc, str
 		}
 	}
 }
+void LinkedList::kiemTraThongTin(string canCuoc, string &hoTen)
+{
+	Node *currentNode= this->pHead;
+	Node *preNode=NULL;
+	while (currentNode!=NULL)
+	{
+		if (checkStr(currentNode->pt.getCanCuocCongDan(),canCuoc)==1)
+		{
+			break;
+		}
+		preNode=currentNode;
+		currentNode= currentNode->next;
+	}
+	if (currentNode==NULL)
+	{
+		cout<<"Ho ten :";
+		getline(cin,hoTen);
+	}
+	else
+	{
+		hoTen=currentNode->pt.getTenChuXe();
+		cout<<"Ho ten : "<<hoTen<<endl;
+	}
+
+}
+

@@ -524,14 +524,14 @@ int main() {
                         LinkedList *list2 = new LinkedList();
                         list2->readFileXeMay();
                         list2->updateKhuVuc(biensoxe,hoTen,canCuoc,mauXe);
-                        list2->writeFile(3);
+                        list2->writeFile(2);
                     }
                     else if(biensoxe.length()==9)
                     {
                         LinkedList *list3 = new LinkedList();
                         list3->readFileOTo();
                         list3->updateKhuVuc(biensoxe,hoTen,canCuoc,mauXe);
-                        list3->writeFile(2);
+                        list3->writeFile(3);
                     }
                     upperCase(khuvuc);
                     LinkedList *list1 = new LinkedList();
