@@ -37,5 +37,6 @@ class LinkedList {
     int update(string bienSoXe, string &khuvuc, string &hoTen, string &canCuoc, string &mauXe);
     void updateKhuVuc(string bienSoXe, string hoTen, string canCuoc, string mauXe);
     void kiemTraThongTin(string canCuoc, string &hoTen);
+    void capNhatSoLuongKhuVuc(string khuVuc);
 };
 #endif

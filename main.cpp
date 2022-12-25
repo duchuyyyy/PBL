@@ -496,6 +496,7 @@ int main() {
                         fileout2 << count2;
                         fileout2.close();
                         }
+                        list1->capNhatSoLuongKhuVuc(khuvuc);
                         list1->writeFileKhuVuc(khuvuc);
                         xoaBienSo(bienso);
                      break;}
