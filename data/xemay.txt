@@ -1,0 +1,22 @@
+Ten chu xe: anh dung,
+So can cuoc cong dan: 111111111111.
+Hang xe: Honda,
+Loai xe: 125cc,
+Mau xe: Den,
+Ten xe: Ab,
+Bien so xe: 43D1-12521,
+12
+2
+2022
+Noi dang ky xe: Thanh Khe.
+Ten chu xe: Phan Hoang Duc Huy,
+So can cuoc cong dan: 124124214212.
+Hang xe: Honda,
+Loai xe: 125cc,
+Mau xe: Den,
+Ten xe: Ab,
+Bien so xe: 43C1-42144,
+12
+4
+2022
+Noi dang ky xe: Hai Chau.
