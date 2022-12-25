@@ -116,8 +116,12 @@ void oTo::input(int &d, int &m, int &y){
             cin >> d;
             cout << "Nhap thang: " << endl;
             cin >> m;
-            cout << "Nhap nam: " << endl;
+    b:      cout << "Nhap nam: " << endl;
             cin >> y;
+            if(y >= 2023) {
+                cout << "Thoi gian nhap khong dung. Vui long nhap lai!" << endl;
+                goto b;
+            }
          if (checkInput(d, m, y) == false)
          {
             cout<<"Nhap sai! Vui long nhap lai"<<endl;

@@ -29,14 +29,14 @@ void menu(){
     printf("\t\t|                                                                                   |\n");
     printf("\t\t|   1. Nhap thong tin cua phuong tien                                               |\n");
     printf("\t\t|   2. Kiem tra kiem dinh tat ca cac phuong tien                                    |\n");
-    printf("\t\t|   3. In ra danh sach cac phuong tien trong thanh pho                              |\n");
+    printf("\t\t|   3. In ra danh sach xe may trong thanh pho                                       |\n");
     printf("\t\t|   4. In ra danh sach cac phuong tien theo khu vuc                                 |\n");
     printf("\t\t|   5. Thong ke so luong phuong tien theo khu vuc                                   |\n");
     printf("\t\t|   6. Tim kiem phuong tien trong thanh pho                                         |\n");
     printf("\t\t|   7. Xoa phuong tien trong thanh pho                                              |\n");
     printf("\t\t|   8. Cap nhat phuong tien trong thanh pho                                         |\n");
     printf("\t\t|   9. In ra danh sach o to trong thanh pho                                         |\n");
-    printf("\t\t|   10. In ra danh sach xe may trong thanh pho                                      |\n");
+    printf("\t\t|   10.In ra danh sach cac phuong tien trong thanh pho                              |\n");
     printf("\t\t|   0. Thoat chuong trinh                                                           |\n");
     printf("\t\t-------------------------------------------------------------------------------------\n");
 }
@@ -265,7 +265,7 @@ int main() {
             case 3:
             {
                 LinkedList *list = new LinkedList();
-                list->readFile();
+                list->readFileXeMay();
                 list->printList();
                 break;
             }
@@ -581,7 +581,7 @@ int main() {
             case 10:
             {
                 LinkedList *list = new LinkedList();
-                list->readFileXeMay();
+                list->readFile();
                 list->printList();
                 break;
             }
